@@ -189,6 +189,10 @@ if(!class_exists('Aq_Resize')) {
     }
 }
 
+
+
+
+
 if(!function_exists('aq_resize')) {
 
     /**
@@ -200,3 +204,4 @@ if(!function_exists('aq_resize')) {
         return $aq_resize->process( $url, $width, $height, $crop, $single, $upscale );
     }
 }
+

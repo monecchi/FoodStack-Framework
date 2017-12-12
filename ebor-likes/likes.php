@@ -35,7 +35,7 @@ class eborLikes {
 	function ajax_callback($post_id){
 
 		$options = get_option( 'ebor_likes_settings' );
-		if( !isset($options['add_to_posts']) ) $options['add_to_posts'] = '1';
+		if( !isset($options['add_to_posts']) ) $options['add_to_posts'] = '0';
 		if( !isset($options['add_to_pages']) ) $options['add_to_pages'] = '0';
 		if( !isset($options['add_to_other']) ) $options['add_to_other'] = '0';
 		if( !isset($options['zero_postfix']) ) $options['zero_postfix'] = '';

@@ -1,0 +1,1490 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Foodstack Framework\n"
+"POT-Creation-Date: 2017-12-12 15:39-0200\n"
+"PO-Revision-Date: 2017-12-12 15:43-0200\n"
+"Last-Translator: Agencia Plan <contato@plandesign.com.br>\n"
+"Language-Team: Agencia Plan <contato@plandesign.com.br>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.0.4\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: index.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SearchPathExcluded-1: fonts\n"
+"X-Poedit-SearchPathExcluded-2: css\n"
+"X-Poedit-SearchPathExcluded-3: ../../../../../../../Users/Plan/Agencia Plan/"
+"Clientes/Pizzaria Meu Rancho Site/Meu Rancho Novo Site/Temas WP/"
+"Pivot_Responsive_WP_Theme_v1.4.8/Developers/pivot-child/admin/plugins/theme-"
+"extras\n"
+"X-Poedit-SearchPathExcluded-4: ../../../../../../../Users/Plan/Agencia Plan/"
+"Clientes/Pizzaria Meu Rancho Site/Meu Rancho Novo Site/Temas WP/"
+"Pivot_Responsive_WP_Theme_v1.4.8/Developers/pivot-child/admin/plugins/theme-"
+"extras\n"
+"X-Poedit-SearchPathExcluded-5: wordpress-importer\n"
+"X-Poedit-SearchPathExcluded-6: metaboxes\n"
+"X-Poedit-SearchPathExcluded-7: vc_blocks\n"
+
+#: ebor-likes/likes.php:116
+msgid "Like this"
+msgstr "Curtir"
+
+#: ebor-likes/likes.php:119
+msgid "You already like this"
+msgstr "Você já curtiu isso"
+
+#: ebor_cpt.php:41
+msgid " Custom Post Type Settings"
+msgstr " Configurações de Tipos de Posts"
+
+#: ebor_cpt.php:59
+msgid "Post Type: Portfolio"
+msgstr "Tipo de Post: Promoção"
+
+#: ebor_cpt.php:68
+msgid "Post Type: Team"
+msgstr "Tipo de Post: Equipe"
+
+#: ebor_cpt.php:79 ebor_cpt.php:356
+msgid "Food Menu"
+msgstr "Card&#xE1;pio"
+
+#: ebor_cpt.php:79
+msgid "Post Type"
+msgstr "Tipo de Post"
+
+#: ebor_cpt.php:132 ebor_cpt.php:143
+msgid "Ebor Mega Menu"
+msgstr "Mega Menu"
+
+#: ebor_cpt.php:133
+msgid "Ebor Mega Menu Item"
+msgstr "Item do Mega Menu"
+
+#: ebor_cpt.php:134 ebor_cpt.php:178 ebor_cpt.php:491 ebor_cpt.php:560
+#: ebor_cpt.php:657 ebor_cpt.php:698 ebor_cpt.php:765 ebor_cpt.php:838
+msgid "Add New"
+msgstr "Add Nova Promo"
+
+#: ebor_cpt.php:135
+msgid "Add New Ebor Mega Menu Item"
+msgstr "Add Novo Item do Mega Menu"
+
+#: ebor_cpt.php:136
+msgid "Edit Ebor Mega Menu Item"
+msgstr "Editar Item do Mega Menu"
+
+#: ebor_cpt.php:137
+msgid "New Ebor Mega Menu Item"
+msgstr "Novo Item do Mega Menu"
+
+#: ebor_cpt.php:138
+msgid "View Ebor Mega Menu Item"
+msgstr "Ver Item do Mega Menu"
+
+#: ebor_cpt.php:139
+msgid "Search Ebor Mega Menu Items"
+msgstr "Buscar Itens do Mega Menu"
+
+#: ebor_cpt.php:140
+msgid "No Ebor Mega Menu Items found"
+msgstr "Nenhum Mega Menu encontrado"
+
+#: ebor_cpt.php:141
+msgid "No Ebor Mega Menu Items found in Trash"
+msgstr "Nenhum Mega Menu encontrado na lixeira"
+
+#: ebor_cpt.php:142
+msgid "Parent Ebor Mega Menu Item:"
+msgstr "Item Mega Menu Pai:"
+
+#: ebor_cpt.php:150
+msgid "Mega Menus entries for the theme."
+msgstr "Mega Menus da Pizzaria Meu Rancho."
+
+#: ebor_cpt.php:176 ebor_cpt.php:177 ebor_cpt.php:187
+msgid "Portfolio"
+msgstr "Promoções"
+
+#: ebor_cpt.php:179
+msgid "Add New Portfolio"
+msgstr "Add Nova Promoção"
+
+#: ebor_cpt.php:180
+msgid "Edit Portfolio"
+msgstr "Editar Promoção"
+
+#: ebor_cpt.php:181
+msgid "New Portfolio"
+msgstr "Nova Promoção"
+
+#: ebor_cpt.php:182
+msgid "View Portfolio"
+msgstr "Ver Promoção"
+
+#: ebor_cpt.php:183
+msgid "Search Portfolios"
+msgstr "Buscar Promoções"
+
+#: ebor_cpt.php:184
+msgid "No portfolios found"
+msgstr "Nenhum promoção encontrada"
+
+#: ebor_cpt.php:185
+msgid "No portfolios found in Trash"
+msgstr "Nenhuma promoção na Lixeira"
+
+#: ebor_cpt.php:186
+msgid "Parent Portfolio:"
+msgstr "Promoção Pai:"
+
+#: ebor_cpt.php:193
+msgid "Portfolio entries for the ebor Theme."
+msgstr "Promoções da Pizzaria Meu Rancho."
+
+#: ebor_cpt.php:218 ebor_cpt.php:228
+msgid "Portfolio Categories"
+msgstr "Categorias de Promoções"
+
+#: ebor_cpt.php:219
+msgid "Portfolio Category"
+msgstr "Categoria de Promoção"
+
+#: ebor_cpt.php:220
+msgid "Search Portfolio Categories"
+msgstr "Buscar Categorias de Promoção"
+
+#: ebor_cpt.php:221
+msgid "All Portfolio Categories"
+msgstr "Todas as Categorias de Promoções"
+
+#: ebor_cpt.php:222
+msgid "Parent Portfolio Category"
+msgstr "Categoria Promocional Pai"
+
+#: ebor_cpt.php:223
+msgid "Parent Portfolio Category:"
+msgstr "Categoria Promocional Pai:"
+
+#: ebor_cpt.php:224
+msgid "Edit Portfolio Category"
+msgstr "Editar Categoria de Promoção"
+
+#: ebor_cpt.php:225
+msgid "Update Portfolio Category"
+msgstr "Atualizar Categoria de Promoção"
+
+#: ebor_cpt.php:226
+msgid "Add New Portfolio Category"
+msgstr "Add Nova Categoria de Promoção"
+
+#: ebor_cpt.php:227
+msgid "New Portfolio Category Name"
+msgstr "Novo Nome para Categoria de Promoção"
+
+#: ebor_cpt.php:252
+msgid "Food Menu Types"
+msgstr "Tipos de Cardápio"
+
+#: ebor_cpt.php:253
+msgid "Food Menu Category"
+msgstr "Tipo de Cardápio"
+
+#: ebor_cpt.php:254
+msgid "Search Food Menu Categories"
+msgstr "Buscar Tipos de Cardápio"
+
+#: ebor_cpt.php:255
+msgid "All Food Menu Categories"
+msgstr "Todos os Tipos de Cardápio"
+
+#: ebor_cpt.php:256
+msgid "Parent Food Menu Category"
+msgstr "Tipo de Cardápio Pai"
+
+#: ebor_cpt.php:257
+msgid "Parent Food Menu Category:"
+msgstr "Tipo de Cardápio Pai:"
+
+#: ebor_cpt.php:258
+msgid "Edit Food Menu Category"
+msgstr "Editar Tipo de Cardápio"
+
+#: ebor_cpt.php:259
+msgid "Update Food Menu Category"
+msgstr "Atualizar Tipo de Cardápio"
+
+#: ebor_cpt.php:260
+msgid "Add New Food Menu Category"
+msgstr "Add Novo Tipo de Cardápio"
+
+#: ebor_cpt.php:261
+msgid "New Food Menu Category Name"
+msgstr "Novo Nome de Tipo de Cardápio"
+
+#: ebor_cpt.php:262
+msgid "Food Menu Categories"
+msgstr "Tipos de Cardápio"
+
+#: ebor_cpt.php:276
+msgid "Manages all the Food Menu Categories"
+msgstr "Gerencia todos os Tipos de Cardápio"
+
+#: ebor_cpt.php:298
+msgctxt "taxonomy food_tags general name"
+msgid "Ingredients"
+msgstr "Ingredientes"
+
+#: ebor_cpt.php:299
+msgctxt "taxonomy food_tags singular name"
+msgid "Ingredient"
+msgstr "Ingrediente"
+
+#: ebor_cpt.php:300
+msgid "Search Ingredients"
+msgstr "Buscar Ingredientes"
+
+#: ebor_cpt.php:301
+msgid "Popular Ingredients"
+msgstr "Ingredientes Mais Usados"
+
+#: ebor_cpt.php:302
+msgid "All Ingredients"
+msgstr "Todos os Ingredientes"
+
+#: ebor_cpt.php:305
+msgid "Edit Ingredient"
+msgstr "Editar Ingrediente"
+
+#: ebor_cpt.php:306
+msgid "Update Ingredient"
+msgstr "Atualizar Ingrediente"
+
+#: ebor_cpt.php:307
+msgid "Add New Ingredient"
+msgstr "Add Novo Ingrediente"
+
+#: ebor_cpt.php:308
+msgid "New Ingredient Name"
+msgstr "Nome Novo de Ingrediente"
+
+#: ebor_cpt.php:309
+msgid "Separate ingredients with commas"
+msgstr "Separe Ingredientes com vírgulas"
+
+#: ebor_cpt.php:310
+msgid "Add or remove Ingredients"
+msgstr "Add ou Remover Ingredientes"
+
+#: ebor_cpt.php:311
+msgid "Choose from the most used Ingredients"
+msgstr "Escolha entre os ingredientes mais usados"
+
+#: ebor_cpt.php:312
+msgid "No Ingredient found."
+msgstr "Nenhum Ingrediente encontrado."
+
+#: ebor_cpt.php:313
+msgid "Ingredients"
+msgstr "Ingredientes"
+
+#: ebor_cpt.php:319
+msgid "Acting like post tags, it manages all the food menu ingredients."
+msgstr ""
+
+#: ebor_cpt.php:345
+msgid "Food Menus"
+msgstr "Cardápio"
+
+#: ebor_cpt.php:346
+msgctxt "Sidebar Nav Menu - All Food Menu Items"
+msgid "Food Menu"
+msgstr "Cardápio Completo"
+
+#: ebor_cpt.php:347
+msgctxt "Sidebar Nav Menu"
+msgid "Add New Food Menu"
+msgstr "Add Item ao Cardápio"
+
+#: ebor_cpt.php:348
+msgctxt "Add New Item Page Title"
+msgid "Add New Food Menu"
+msgstr "Add Novo Item ao Cardápio"
+
+#: ebor_cpt.php:349
+msgctxt "Edit Item Page Title"
+msgid "Edit Food Menu Item"
+msgstr "Editar Item do Cardápio"
+
+#: ebor_cpt.php:350
+msgctxt "Action Button - Add New Item"
+msgid "New Food Menu Item"
+msgstr "Add Novo Item ao Cardápio"
+
+#: ebor_cpt.php:351
+msgid "View Food Menu Item"
+msgstr "Ver Item de Cardápio"
+
+#: ebor_cpt.php:352
+msgid "Search Food Menu Items"
+msgstr "Buscar Itens de Cardápio"
+
+#: ebor_cpt.php:353
+msgid "No Food Menu found"
+msgstr "Nenhum Item de Cardápio encontrado"
+
+#: ebor_cpt.php:354
+msgid "No Food Menu found in Trash"
+msgstr "Nenhum Item de Cardápio encontrado na lixeira"
+
+#: ebor_cpt.php:355
+msgid "Parent Food Menu:"
+msgstr "Cardápio Pai:"
+
+#: ebor_cpt.php:387
+msgid "Food Menu entries."
+msgstr "Cardápio da Pizzaria Meu Rancho."
+
+#: ebor_cpt.php:420 ebor_cpt.php:431
+msgid "Team Members"
+msgstr "Funcionários"
+
+#: ebor_cpt.php:421
+msgid "Team Member"
+msgstr "Funcionário"
+
+#: ebor_cpt.php:422 ebor_cpt.php:423
+msgid "Add New Team Member"
+msgstr "Add Funcionário"
+
+#: ebor_cpt.php:424
+msgid "Edit Team Member"
+msgstr "Editar Funcionário"
+
+#: ebor_cpt.php:425
+msgid "New Team Member"
+msgstr "Novo Funcionário"
+
+#: ebor_cpt.php:426
+msgid "View Team Member"
+msgstr "Ver Funcionário"
+
+#: ebor_cpt.php:427
+msgid "Search Team Members"
+msgstr "Buscar por Funcionário"
+
+#: ebor_cpt.php:428
+msgid "No Team Members found"
+msgstr "Nenhum Funcionário encontrado"
+
+#: ebor_cpt.php:429
+msgid "No Team Members found in Trash"
+msgstr "Nenhum Funcionário encontrado na lixeira"
+
+#: ebor_cpt.php:430
+msgid "Parent Team Member:"
+msgstr "Funcionário Pai:"
+
+#: ebor_cpt.php:437
+msgid "Team Member entries for the ebor Theme."
+msgstr "Funcionários da Pizzaria Meu Rancho."
+
+#: ebor_cpt.php:461 ebor_cpt.php:471
+msgid "Team Categories"
+msgstr "Categorias de Equipe"
+
+#: ebor_cpt.php:462
+msgid "Team Category"
+msgstr "Categoria de Equipe"
+
+#: ebor_cpt.php:463
+msgid "Search Team Categories"
+msgstr "Buscar por Categorias da Equipe"
+
+#: ebor_cpt.php:464
+msgid "All Team Categories"
+msgstr "Todas as Categorias de Equipe"
+
+#: ebor_cpt.php:465
+msgid "Parent Team Category"
+msgstr "Categoria de Equipe Pai"
+
+#: ebor_cpt.php:466
+msgid "Parent Team Category:"
+msgstr "Categoria de Equipe Pai:"
+
+#: ebor_cpt.php:467
+msgid "Edit Team Category"
+msgstr "Editar Categoria de Equipe"
+
+#: ebor_cpt.php:468
+msgid "Update Team Category"
+msgstr "Atualizar Categoria de Equipe"
+
+#: ebor_cpt.php:469
+msgid "Add New Team Category"
+msgstr "Add Nova Categoria de Equipe"
+
+#: ebor_cpt.php:470
+msgid "New Team Category Name"
+msgstr "Novo Nome de Categoria de Equipe"
+
+#: ebor_cpt.php:489 ebor_cpt.php:500
+msgid "Clients"
+msgstr "Logos - Parceiros"
+
+#: ebor_cpt.php:490
+msgid "Client"
+msgstr "Parceiro"
+
+#: ebor_cpt.php:492
+msgid "Add New Client"
+msgstr "Add Novo Parceiro"
+
+#: ebor_cpt.php:493
+msgid "Edit Client"
+msgstr "Editar Parceiro"
+
+#: ebor_cpt.php:494
+msgid "New Client"
+msgstr "Novo Parceiro"
+
+#: ebor_cpt.php:495
+msgid "View Client"
+msgstr "Ver Parceiro"
+
+#: ebor_cpt.php:496
+msgid "Search Clients"
+msgstr "Buscar Parceiros"
+
+#: ebor_cpt.php:497
+msgid "No Clients found"
+msgstr "Nenhum Parceiro encontrado"
+
+#: ebor_cpt.php:498
+msgid "No Clients found in Trash"
+msgstr "Nenhum Parceiro encontrado na lixeira"
+
+#: ebor_cpt.php:499
+msgid "Parent Client:"
+msgstr "Parceiro Pai:"
+
+#: ebor_cpt.php:506
+msgid "Client entries."
+msgstr "Parceiros da Pizzaria Meu Rancho."
+
+#: ebor_cpt.php:530 ebor_cpt.php:540
+msgid "Client Categories"
+msgstr "Categorias de Parceiro"
+
+#: ebor_cpt.php:531
+msgid "Client Category"
+msgstr "Categoria de Parceiro"
+
+#: ebor_cpt.php:532
+msgid "Search Client Categories"
+msgstr "Buscar Categorias de Parceiro"
+
+#: ebor_cpt.php:533
+msgid "All Client Categories"
+msgstr "Todas as Categorias de Parceiro"
+
+#: ebor_cpt.php:534
+msgid "Parent Client Category"
+msgstr "Categoria de Parceiro Pai"
+
+#: ebor_cpt.php:535
+msgid "Parent Client Category:"
+msgstr "Categoria de Parceiro Pai:"
+
+#: ebor_cpt.php:536
+msgid "Edit Client Category"
+msgstr "Editar Categoria de Parceiro"
+
+#: ebor_cpt.php:537
+msgid "Update Client Category"
+msgstr "Atualizar Categoria de Parceiro"
+
+#: ebor_cpt.php:538
+msgid "Add New Client Category"
+msgstr "Add Nova Categoria de Parceiro"
+
+#: ebor_cpt.php:539
+msgid "New Client Category Name"
+msgstr "Novo Nome de Categoria de Parceiro"
+
+#: ebor_cpt.php:558 ebor_cpt.php:569
+msgid "Testimonials"
+msgstr "Avaliações"
+
+#: ebor_cpt.php:559
+msgid "Testimonial"
+msgstr "Avaliação"
+
+#: ebor_cpt.php:561
+msgid "Add New Testimonial"
+msgstr "Add Nova Avaliação"
+
+#: ebor_cpt.php:562
+msgid "Edit Testimonial"
+msgstr "Editar Avaliação"
+
+#: ebor_cpt.php:563
+msgid "New Testimonial"
+msgstr "Nova Avaliação"
+
+#: ebor_cpt.php:564
+msgid "View Testimonial"
+msgstr "Ver Avaliação"
+
+#: ebor_cpt.php:565
+msgid "Search Testimonials"
+msgstr "Buscar Avaliações"
+
+#: ebor_cpt.php:566
+msgid "No Testimonials found"
+msgstr "Nenhuma Avaliação encontrada"
+
+#: ebor_cpt.php:567
+msgid "No Testimonials found in Trash"
+msgstr "Nenhuma Avaliação encontrada na lixeira"
+
+#: ebor_cpt.php:568
+msgid "Parent Testimonial:"
+msgstr "Avaliação Pai:"
+
+#: ebor_cpt.php:575
+msgid "Testimonial entries."
+msgstr "Avaliações editáveis da Pizzaria Meu Rancho."
+
+#: ebor_cpt.php:599 ebor_cpt.php:609
+msgid "Testimonial Categories"
+msgstr "Categorias das Avaliações"
+
+#: ebor_cpt.php:600
+msgid "Testimonial Category"
+msgstr "Categoria de Avaliação"
+
+#: ebor_cpt.php:601
+msgid "Search Testimonial Categories"
+msgstr "Buscar Categorias da Avaliações"
+
+#: ebor_cpt.php:602
+msgid "All Testimonial Categories"
+msgstr "Todas as Categorias das Avaliações"
+
+#: ebor_cpt.php:603
+msgid "Parent Testimonial Category"
+msgstr "Categoria de Avaliação Pai"
+
+#: ebor_cpt.php:604
+msgid "Parent Testimonial Category:"
+msgstr "Categoria de Avaliação Pai:"
+
+#: ebor_cpt.php:605
+msgid "Edit Testimonial Category"
+msgstr "Editar Categoria de Avaliação"
+
+#: ebor_cpt.php:606
+msgid "Update Testimonial Category"
+msgstr "Atualizar Categoria de Avaliação"
+
+#: ebor_cpt.php:607
+msgid "Add New Testimonial Category"
+msgstr "Add Nova Categoria de Avaliação"
+
+#: ebor_cpt.php:608
+msgid "New Testimonial Category Name"
+msgstr "Novo Nome de Categoria de Avaliação"
+
+#: ebor_cpt.php:627 ebor_cpt.php:637
+msgid "FAQ Categories"
+msgstr "Categorias do FAQ"
+
+#: ebor_cpt.php:628
+msgid "FAQ Category"
+msgstr "Categoria de FAQ"
+
+#: ebor_cpt.php:629
+msgid "Search FAQ Categories"
+msgstr "Buscar Categorias do FAQ"
+
+#: ebor_cpt.php:630
+msgid "All FAQ Categories"
+msgstr "Todas as Categorias do FAQ"
+
+#: ebor_cpt.php:631
+msgid "Parent FAQ Category"
+msgstr "Categoria do FAQ Pai"
+
+#: ebor_cpt.php:632
+msgid "Parent FAQ Category:"
+msgstr "Categoria do FAQ Pai:"
+
+#: ebor_cpt.php:633
+msgid "Edit FAQ Category"
+msgstr "Editar Categoria do FAQ"
+
+#: ebor_cpt.php:634
+msgid "Update FAQ Category"
+msgstr "Atualizar Categoria do FAQ"
+
+#: ebor_cpt.php:635
+msgid "Add New FAQ Category"
+msgstr "Add Nova Categoria do FAQ"
+
+#: ebor_cpt.php:636
+msgid "New FAQ Category Name"
+msgstr "Add Novo Nome de Categoria da FAQ"
+
+#: ebor_cpt.php:655 ebor_cpt.php:666
+msgid "FAQs"
+msgstr "FAQs"
+
+#: ebor_cpt.php:656
+msgid "FAQ"
+msgstr "FAQ"
+
+#: ebor_cpt.php:658
+msgid "Add New FAQ"
+msgstr "Add Novo FAQ"
+
+#: ebor_cpt.php:659
+msgid "Edit FAQ"
+msgstr "Editar FAQ"
+
+#: ebor_cpt.php:660
+msgid "New FAQ"
+msgstr "Novo FAQ"
+
+#: ebor_cpt.php:661
+msgid "View FAQ"
+msgstr "Ver FAQ"
+
+#: ebor_cpt.php:662
+msgid "Search FAQs"
+msgstr "Buscar FAQs"
+
+#: ebor_cpt.php:663
+msgid "No faqs found"
+msgstr "Nenhum FAQ encontrado"
+
+#: ebor_cpt.php:664
+msgid "No FAQs found in Trash"
+msgstr "Nenhum FAQ encontrado na lixeira"
+
+#: ebor_cpt.php:665
+msgid "Parent FAQ:"
+msgstr "FAQ Pai:"
+
+#: ebor_cpt.php:672
+msgid "FAQ Entries."
+msgstr "FAQs - Perguntas Frequentes da Pizzaria Meu Rancho."
+
+#: ebor_cpt.php:696 ebor_cpt.php:707
+msgid "Classes"
+msgstr "Cursos - Aulas"
+
+#: ebor_cpt.php:697
+msgid "Class"
+msgstr ""
+
+#: ebor_cpt.php:699
+msgid "Add New Class"
+msgstr ""
+
+#: ebor_cpt.php:700
+msgid "Edit Class"
+msgstr ""
+
+#: ebor_cpt.php:701
+msgid "New Class"
+msgstr ""
+
+#: ebor_cpt.php:702
+msgid "View Class"
+msgstr ""
+
+#: ebor_cpt.php:703
+msgid "Search Classes"
+msgstr ""
+
+#: ebor_cpt.php:704
+msgid "No Classes found"
+msgstr ""
+
+#: ebor_cpt.php:705
+msgid "No Classes found in Trash"
+msgstr ""
+
+#: ebor_cpt.php:706
+msgid "Parent Classes:"
+msgstr ""
+
+#: ebor_cpt.php:713
+msgid "Class Entries."
+msgstr ""
+
+#: ebor_cpt.php:736 ebor_cpt.php:746
+msgid "Class Categories"
+msgstr ""
+
+#: ebor_cpt.php:737
+msgid "Class Category"
+msgstr ""
+
+#: ebor_cpt.php:738
+msgid "Search Class Categories"
+msgstr ""
+
+#: ebor_cpt.php:739
+msgid "All Class Categories"
+msgstr ""
+
+#: ebor_cpt.php:740
+msgid "Parent Class Category"
+msgstr ""
+
+#: ebor_cpt.php:741
+msgid "Parent Class Category:"
+msgstr ""
+
+#: ebor_cpt.php:742
+msgid "Edit Class Category"
+msgstr ""
+
+#: ebor_cpt.php:743
+msgid "Update Class Category"
+msgstr ""
+
+#: ebor_cpt.php:744
+msgid "Add New Class Category"
+msgstr ""
+
+#: ebor_cpt.php:745
+msgid "New Class Category Name"
+msgstr ""
+
+#: ebor_cpt.php:763 ebor_cpt.php:774
+msgid "Services"
+msgstr ""
+
+#: ebor_cpt.php:764
+msgid "Service"
+msgstr ""
+
+#: ebor_cpt.php:766
+msgid "Add New Service"
+msgstr ""
+
+#: ebor_cpt.php:767
+msgid "Edit Service"
+msgstr ""
+
+#: ebor_cpt.php:768
+msgid "New Service"
+msgstr ""
+
+#: ebor_cpt.php:769
+msgid "View Service"
+msgstr ""
+
+#: ebor_cpt.php:770
+msgid "Search Services"
+msgstr ""
+
+#: ebor_cpt.php:771
+msgid "No Services found"
+msgstr ""
+
+#: ebor_cpt.php:772
+msgid "No Services found in Trash"
+msgstr ""
+
+#: ebor_cpt.php:773
+msgid "Parent Service:"
+msgstr ""
+
+#: ebor_cpt.php:780
+msgid "Service entries."
+msgstr ""
+
+#: ebor_cpt.php:805 ebor_cpt.php:815
+msgid "Service Categories"
+msgstr ""
+
+#: ebor_cpt.php:806
+msgid "Service Category"
+msgstr ""
+
+#: ebor_cpt.php:807
+msgid "Search Service Categories"
+msgstr ""
+
+#: ebor_cpt.php:808
+msgid "All Service Categories"
+msgstr ""
+
+#: ebor_cpt.php:809
+msgid "Parent Service Category"
+msgstr ""
+
+#: ebor_cpt.php:810
+msgid "Parent Service Category:"
+msgstr ""
+
+#: ebor_cpt.php:811
+msgid "Edit Service Category"
+msgstr ""
+
+#: ebor_cpt.php:812
+msgid "Update Service Category"
+msgstr ""
+
+#: ebor_cpt.php:813
+msgid "Add New Service Category"
+msgstr ""
+
+#: ebor_cpt.php:814
+msgid "New Service Category Name"
+msgstr ""
+
+#: ebor_cpt.php:836 ebor_cpt.php:847
+msgid "Case Studies"
+msgstr ""
+
+#: ebor_cpt.php:837
+msgid "Case Study"
+msgstr ""
+
+#: ebor_cpt.php:839
+msgid "Add New Case Study"
+msgstr ""
+
+#: ebor_cpt.php:840
+msgid "Edit Case Study"
+msgstr ""
+
+#: ebor_cpt.php:841
+msgid "New Case Study"
+msgstr ""
+
+#: ebor_cpt.php:842
+msgid "View Case Study"
+msgstr ""
+
+#: ebor_cpt.php:843
+msgid "Search Case Studies"
+msgstr ""
+
+#: ebor_cpt.php:844
+msgid "No Case Studies found"
+msgstr ""
+
+#: ebor_cpt.php:845
+msgid "No Case Studies found in Trash"
+msgstr ""
+
+#: ebor_cpt.php:846
+msgid "Parent Case Study:"
+msgstr ""
+
+#: ebor_cpt.php:853
+msgid "Case Study entries."
+msgstr ""
+
+#: ebor_cpt.php:878 ebor_cpt.php:888
+msgid "Case Study Categories"
+msgstr ""
+
+#: ebor_cpt.php:879
+msgid "Case Study Category"
+msgstr ""
+
+#: ebor_cpt.php:880
+msgid "Search Case Study Categories"
+msgstr ""
+
+#: ebor_cpt.php:881
+msgid "All Case Study Categories"
+msgstr ""
+
+#: ebor_cpt.php:882
+msgid "Parent Case Study Category"
+msgstr ""
+
+#: ebor_cpt.php:883
+msgid "Parent Case Study Category:"
+msgstr ""
+
+#: ebor_cpt.php:884
+msgid "Edit Case Study Category"
+msgstr ""
+
+#: ebor_cpt.php:885
+msgid "Update Case Study Category"
+msgstr ""
+
+#: ebor_cpt.php:886
+msgid "Add New Case Study Category"
+msgstr ""
+
+#: ebor_cpt.php:887
+msgid "New Case Study Category Name"
+msgstr ""
+
+#: ebor_functions.php:72
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: ebor_functions.php:193
+msgid "Featured Image"
+msgstr ""
+
+#: getting_started.php:6 getting_started.php:7
+msgid "Getting Started"
+msgstr ""
+
+#: getting_started.php:99
+#, php-format
+msgid "Getting started with %1$s v%2$s"
+msgstr ""
+
+#: getting_started.php:101
+#, php-format
+msgid ""
+"Thanks for purchasing %1$s. You will find everything you need to get started "
+"setting up your site below."
+msgstr ""
+
+#: getting_started.php:107
+msgid "Help File"
+msgstr ""
+
+#: getting_started.php:108
+msgid "Plugins"
+msgstr ""
+
+#: getting_started.php:109
+msgid "Troubleshooting"
+msgstr ""
+
+#: getting_started.php:110
+msgid "FAQ &amp; Support"
+msgstr ""
+
+#: getting_started.php:129
+msgid "Required Plugins"
+msgstr ""
+
+#: getting_started.php:131
+msgid ""
+"Your new theme has a list of required and recommended plugins that it may "
+"need to run. To install these visit \"appearance => install plugins\", if "
+"this menu option is unavailable then you have already installed the plugins, "
+"well done!"
+msgstr ""
+
+#: getting_started.php:170
+msgid "Help file currently unavailable."
+msgstr ""
+
+#: getting_started.php:178
+msgid "Where do I get support for "
+msgstr ""
+
+#: getting_started.php:190
+#, php-format
+msgid ""
+"If you&apos;ve read through the Help File in the first tab, watched the "
+"videos, checked the troubleshooting tab, and still have questions or are "
+"experiencing issues, we&apos;re happy to help! Simply <a href=\"%s\">contact "
+"us</a> and be sure to leave a descriptive ticket of your issue, along with "
+"your site URL."
+msgstr ""
+
+#: getting_started.php:193
+msgid "Support Forum &rarr;"
+msgstr ""
+
+#: getting_started.php:202 getting_started.php:205
+msgid "Visit the Knowledge Base"
+msgstr ""
+
+#: getting_started.php:203
+msgid ""
+"New to the WordPress world? Our Knowledge Base has written & video "
+"tutorials, from installing WordPress to working with themes and more."
+msgstr ""
+
+#: page-builder/classes/class-aq-block.php:36
+msgid ""
+"function AQ_Block::block should not be accessed directly. Output generated "
+"by the "
+msgstr ""
+
+#: page-builder/classes/class-aq-block.php:64
+msgid "There are no options for this block."
+msgstr ""
+
+#: page-builder/classes/class-aq-block.php:148
+msgid "Edit Block"
+msgstr ""
+
+#: page-builder/classes/class-aq-block.php:173
+msgid "Delete"
+msgstr ""
+
+#: page-builder/classes/class-aq-block.php:173
+msgid "Close"
+msgstr ""
+
+#: page-builder/classes/class-aq-page-builder.php:25
+#: page-builder/classes/class-aq-page-builder.php:26
+msgid "Page Builder"
+msgstr ""
+
+#: page-builder/classes/class-aq-page-builder.php:27
+msgid "aqua-page-builder"
+msgstr ""
+
+#: page-builder/classes/class-aq-page-builder.php:272
+msgid ""
+"Drag block items from the left into this area to begin building your "
+"template."
+msgstr ""
+
+#: page-builder/classes/class-aq-page-builder.php:414
+msgid "Error : Template id is not valid"
+msgstr ""
+
+#: page-builder/classes/class-aq-page-builder.php:558
+msgid "This template is empty"
+msgstr ""
+
+#: page-builder/classes/class-aq-page-builder.php:681
+#: page-builder/classes/class-aq-page-builder.php:682
+#: page-builder/classes/class-aq-page-builder.php:685
+msgid "Add Page Template"
+msgstr ""
+
+#: page-builder/classes/class-aq-page-builder.php:685
+msgid "Add Template"
+msgstr ""
+
+#: page-builder/classes/class-aq-page-builder.php:723
+msgid "Please select your template first!"
+msgstr ""
+
+#: page-builder/classes/class-aq-page-builder.php:740
+#, php-format
+msgid "You don't have any template yet. Let's %s create %s one!"
+msgstr ""
+
+#: page-builder/classes/class-aq-page-builder.php:743
+msgid "Choose Your Page Template"
+msgstr ""
+
+#: page-builder/classes/class-aq-page-builder.php:751
+msgid "Insert Template"
+msgstr ""
+
+#: page-builder/classes/class-aq-page-builder.php:752
+msgid "Cancel"
+msgstr ""
+
+#: page-builder/functions/aqpb_config.php:14
+#: page-builder/functions/aqpb_config.php:15
+msgid "Ebor Page Builder"
+msgstr ""
+
+#: page-builder/functions/aqpb_config.php:16
+msgid "ebor-page-builder"
+msgstr ""
+
+#: page-builder/functions/aqpb_config.php:21
+msgid ""
+"The page builder allows you to create custom page templates which you can "
+"later use for your pages."
+msgstr ""
+
+#: page-builder/functions/aqpb_config.php:22
+msgid ""
+"To use the page builder, start by adding a new template. You can drag and "
+"drop the blocks on the left into the building area on the right of the "
+"screen. Each block has its own unique configuration which you can manually "
+"configure to suit your needs"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:19
+msgid "Cheatin&#8217; uh?"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:62
+#: page-builder/view/view-builder-page.php:86
+#: page-builder/view/view-builder-page.php:109
+msgid "The "
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:62
+msgid " page template has been successfully created"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:70
+#: page-builder/view/view-builder-page.php:94
+msgid "Sorry, the operation was unsuccessful for the following reason(s): "
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:86
+msgid " template has been successfully cloned"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:109
+msgid " page template has been updated"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:121
+msgid "The template has been successfully deleted"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:166
+msgid "Select a template to edit:"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:171
+msgid "-- Select --"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:190
+msgid "or"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:203
+msgid "Create a new template"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:210
+msgid "Create your new template below"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:220
+msgid "All Available Blocks"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:220
+msgid "Deleting"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:243
+msgid "Template Name"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:244
+msgid "Enter template name here"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:252
+msgid "Create Template"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:252
+#: page-builder/view/view-builder-page.php:331
+msgid "Save Template"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:277
+msgid ""
+"To create a custom page template, give it a name above and click Create "
+"Template. Then choose blocks like text, widgets or tabs &amp; toggles from "
+"the left column to add to this template.\n"
+"\t\t\t\t\t\t\t\t\t<br/><br/>\n"
+"\t\t\t\t\t\t\t\t\tYou can drag and drop the blocks to put them in the order "
+"you want. Click on the small arrow at the corner of each block to reveal "
+"additional configuration options. You can also resize each block by clicking "
+"on either side of the block (Note that some blocks are not resizable)\n"
+"\t\t\t\t\t\t\t\t\t<br/><br/>\n"
+"\t\t\t\t\t\t\t\t\tWhen you have finished building your custom page template, "
+"make sure you click the Save Template button."
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:308
+msgid "Delete Template"
+msgstr ""
+
+#: page-builder/view/view-builder-page.php:323
+msgid "Clone Template"
+msgstr ""
+
+#: widgets/elemis-widgets.php:12 widgets/keepsake-widgets.php:8
+#: widgets/lumos-widgets.php:8 widgets/morello-widgets.php:8
+msgid "TommusRhodus: Popular Posts"
+msgstr ""
+
+#: widgets/elemis-widgets.php:13 widgets/foundry-widgets.php:183
+#: widgets/keepsake-widgets.php:9 widgets/lumos-widgets.php:9
+#: widgets/machine-widgets.php:183 widgets/meetup-widgets.php:9
+#: widgets/morello-widgets.php:9
+msgid "Add a simple popular posts widget"
+msgstr ""
+
+#: widgets/elemis-widgets.php:101 widgets/keepsake-widgets.php:107
+#: widgets/lumos-widgets.php:95 widgets/morello-widgets.php:105
+msgid "TommusRhodus: Social Icons"
+msgstr ""
+
+#: widgets/elemis-widgets.php:102 widgets/keepsake-widgets.php:108
+#: widgets/lumos-widgets.php:96 widgets/morello-widgets.php:106
+msgid "Add a simple social icons widget"
+msgstr ""
+
+#: widgets/foundry-widgets.php:14
+msgid "Foundry: Instagram Widget"
+msgstr ""
+
+#: widgets/foundry-widgets.php:15 widgets/machine-widgets.php:15
+#: widgets/pivot-widgets.php:15
+msgid "Add a simple Instagram feed widget"
+msgstr ""
+
+#: widgets/foundry-widgets.php:53 widgets/foundry-widgets.php:140
+#: widgets/machine-widgets.php:53 widgets/machine-widgets.php:140
+#: widgets/meetup-widgets.php:141 widgets/pivot-widgets.php:53
+#: widgets/pivot-widgets.php:140 widgets/pivot-widgets.php:236
+msgid "Title:"
+msgstr ""
+
+#: widgets/foundry-widgets.php:58 widgets/machine-widgets.php:58
+#: widgets/pivot-widgets.php:58
+msgid "Username:"
+msgstr ""
+
+#: widgets/foundry-widgets.php:92
+msgid "Foundry: Twitter Widget"
+msgstr ""
+
+#: widgets/foundry-widgets.php:93 widgets/machine-widgets.php:93
+#: widgets/pivot-widgets.php:93
+msgid "Add a simple Twitter feed widget"
+msgstr ""
+
+#: widgets/foundry-widgets.php:182
+msgid "Foundry: Popular Posts"
+msgstr ""
+
+#: widgets/machine-widgets.php:14
+msgid "Machine : Instagram Widget"
+msgstr ""
+
+#: widgets/machine-widgets.php:92
+msgid "Machine : Twitter Widget"
+msgstr ""
+
+#: widgets/machine-widgets.php:182
+msgid "Machine: Recent Posts"
+msgstr ""
+
+#: widgets/meetup-widgets.php:8
+msgid "Meetup: Recent Posts"
+msgstr ""
+
+#: widgets/meetup-widgets.php:92
+msgid "Meetup: Social Widget"
+msgstr ""
+
+#: widgets/meetup-widgets.php:93 widgets/pivot-widgets.php:188
+msgid "Add a simple social feed widget"
+msgstr ""
+
+#: widgets/pivot-widgets.php:14
+msgid "Pivot: Instagram Widget"
+msgstr ""
+
+#: widgets/pivot-widgets.php:92
+msgid "Pivot: Twitter Widget"
+msgstr ""
+
+#: widgets/pivot-widgets.php:187
+msgid "Pivot: Social Widget"
+msgstr ""
+
+#: wp-updates-plugin.php:86
+msgid ""
+"An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?"
+"\" onclick=\"document.location.reload(); return false;\">Try again</a>"
+msgstr ""
+
+#: wp-updates-plugin.php:90
+msgid "An unknown error occurred"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Foodstack Framework"
+msgstr "Foodstack Framework"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://www.plandesign.com.br"
+msgstr "https://www.plandesign.com.br"
+
+#. Description of the plugin/theme
+msgid ""
+"Derived from Ebor Framework by TommusRhodus Theme, this alternate version "
+"was specially crafted for WooCommerce Restaurant & Food Store websites"
+msgstr ""
+"O Plugin FoodStack Framework ajuda a criar Cardápios e a integrá-los com sua "
+"loja online do WooCommerce. Desenvolvido especialmente para o segmento de "
+"alimentação (restaurantes, pizzarias, lanchonetes), traz os melhores "
+"recursos do plugin Ebor Framework por TommusRhodus Theme, e adiciona novos "
+"recursos e configurações para o segmento de alimentação."
+
+#. Author of the plugin/theme
+msgid "Adriano Monecchi"
+msgstr "Adriano Monecchi"
+
+#~ msgid "Food Tags"
+#~ msgstr "Ingredientes"
+
+#~ msgid "Food Tag"
+#~ msgstr "Ingrediente"
+
+#~ msgctxt "Sidebar Nav Menu - All Items"
+#~ msgid "All Food Menu Items"
+#~ msgstr "Cardápio Completo"
+
+#~ msgctxt "Edit Item Page Title"
+#~ msgid "Add New Food Menu"
+#~ msgstr "Add Novo Item ao"
+
+#~ msgid "Add New Food Menu Item"
+#~ msgstr "Add Item de Cardápio"
+
+#~ msgid "Edit Food Menu Item"
+#~ msgstr "Editar Item de Cardápio"
+
+#~ msgid "New Food Menu Item"
+#~ msgstr "Novo Item de Cardápio"
+
+#~ msgctxt "Edit Item Page"
+#~ msgid "Add New Food Menu"
+#~ msgstr "Add Novo Item ao Cardápio"
+
+#~ msgctxt "Action Button - When viewing all items"
+#~ msgid "Add New Food Menu"
+#~ msgstr "Add Novo Item de Cardápio"
+
+#~ msgid "Add New Food Menu"
+#~ msgstr "Add Novo Item de Cardápio"
+
+#~ msgctxt "ebor-framework"
+#~ msgid "Portfolio Categories"
+#~ msgstr "Categorias de Promoções"
+
+#~ msgctxt "ebor-framework"
+#~ msgid "Portfolio Category"
+#~ msgstr "Categoria de Promoção"
+
+#~ msgctxt "ebor-framework"
+#~ msgid "Food Menu Types"
+#~ msgstr "Tipos de Card&#xE1;pio"
+
+#~ msgctxt "ebor-framework"
+#~ msgid "Food Menu Category"
+#~ msgstr "Categoria de Card&#xE1;pio"
+
+#~ msgctxt "ebor-framework"
+#~ msgid "Team Categories"
+#~ msgstr "Categorias de Equipe"
+
+#~ msgctxt "ebor-framework"
+#~ msgid "Team Category"
+#~ msgstr "Categoria de Equipe"
+
+#~ msgctxt "ebor-framework"
+#~ msgid "Client Categories"
+#~ msgstr "Categorias de Cliente"
+
+#~ msgctxt "ebor-framework"
+#~ msgid "Client Category"
+#~ msgstr "Categoria de Cliente"
+
+#~ msgctxt "ebor-framework"
+#~ msgid "Testimonial Categories"
+#~ msgstr "Categorias de Avaliações"
+
+#~ msgctxt "ebor-framework"
+#~ msgid "Testimonial Category"
+#~ msgstr "Categoria de Avaliação"
+
+#~ msgctxt "ebor-framework"
+#~ msgid "FAQ Categories"
+#~ msgstr "Categorias de FAQ"
+
+#~ msgctxt "ebor-framework"
+#~ msgid "FAQ Category"
+#~ msgstr "Categoria de FAQ"
+
+#~ msgctxt "ebor"
+#~ msgid "Portfolio Categories"
+#~ msgstr "Categoria das Promoções"
+
+#~ msgctxt "ebor"
+#~ msgid "Portfolio Category"
+#~ msgstr "Categoria Promoções"
+
+#~ msgctxt "ebor"
+#~ msgid "Food Menu Types"
+#~ msgstr "Tipos de Cardápio"
+
+#~ msgctxt "ebor"
+#~ msgid "Food Menu Category"
+#~ msgstr "Categoria do Cardápio"
+
+#~ msgctxt "ebor"
+#~ msgid "Team Categories"
+#~ msgstr "Categorias de Equipe"
+
+#~ msgctxt "ebor"
+#~ msgid "Team Category"
+#~ msgstr "Categoria de Equipe"
+
+#~ msgctxt "ebor"
+#~ msgid "Client Categories"
+#~ msgstr "Categorias de Clientes"
+
+#~ msgctxt "ebor"
+#~ msgid "Client Category"
+#~ msgstr "Categoria de Cliente"
+
+#~ msgctxt "ebor"
+#~ msgid "Testimonial Categories"
+#~ msgstr "Categorias das Avaliações"
+
+#~ msgctxt "ebor"
+#~ msgid "Testimonial Category"
+#~ msgstr "Categoria da Avaliação"
+
+#~ msgctxt "ebor"
+#~ msgid "FAQ Categories"
+#~ msgstr "Categorias do FAQ"
+
+#~ msgctxt "ebor"
+#~ msgid "FAQ Category"
+#~ msgstr "Categoria do FAQ"
+
+#~ msgid "Change Avatar"
+#~ msgstr "Mudar Avatar"
+
+#~ msgid "An error has occurred. Please reload the page and try again."
+#~ msgstr "Um erro ocorreu. Por favor recarregue a página e tente novamente."
+
+#~ msgid "Find Posts or Pages"
+#~ msgstr "Encontrar Posts ou Páginas"

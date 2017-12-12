@@ -173,16 +173,16 @@ if(class_exists('AQ_Page_Builder')) {
 	}
 	
 	/* Multiselect field */
-	// function aq_field_multiselect($field_id, $block_id, $options, $selected_keys = array()) {
-	// 	$output = '<select id="'. $block_id .'_'.$field_id.'" multiple="multiple" class="select of-input" name="aq_blocks['.$block_id.']['.$field_id.'][]">';
-	// 	foreach ($options as $key => $option) {
-	// 		$selected = (is_array($selected_keys) && in_array($key, $selected_keys)) ? $selected = 'selected="selected"' : '';			
-	// 		$output .= '<option id="'. $block_id .'_'.$field_id.'_'. $key .'" value="'.$key.'" '. $selected .' />'.$option.'</option>';
-	// 	}
-	// 	$output .= '</select>';
+	function aq_field_multiselect($field_id, $block_id, $options, $selected_keys = array()) {
+		$output = '<select id="'. $block_id .'_'.$field_id.'" multiple="multiple" class="select of-input" name="aq_blocks['.$block_id.']['.$field_id.'][]">';
+		foreach ($options as $key => $option) {
+			$selected = (is_array($selected_keys) && in_array($key, $selected_keys)) ? $selected = 'selected="selected"' : '';			
+			$output .= '<option id="'. $block_id .'_'.$field_id.'_'. $key .'" value="'.$key.'" '. $selected .' />'.$option.'</option>';
+		}
+		$output .= '</select>';
 		
-	// 	return $output;
-	// }
+		return $output;
+	}
 	
 	/* Color picker field */
 	function aq_field_color_picker($field_id, $block_id, $color, $default = '') {

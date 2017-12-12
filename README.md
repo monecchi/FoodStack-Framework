@@ -1,4 +1,5 @@
-FoodStack-Framework
+Ebor-Framework
 ==============
 
-Custom post types, meta boxes with WooCommerce for Restaurant & Food Stores in mind etc.
+Ebor Framework - The Driving Force Behind TommusRhodus' Themes
+Custom post types, meta boxes etc.

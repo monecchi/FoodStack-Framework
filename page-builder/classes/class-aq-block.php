@@ -47,7 +47,9 @@ if(!class_exists('AQ_Block')) {
 	 	// 	return $new_instance;
 	 	// }
 
-		// Custom Mrancho Update Fucntion to make multiselect input work, the above is Aqua Page Builder default function
+	 	/**
+	 	 * Custom Mrancho Update Fucntion to make multiselect input work, the above is Aqua Page Builder default function
+	 	 */
 		function update($new_instance, $old_instance) {
 		return $new_instance;
 		}

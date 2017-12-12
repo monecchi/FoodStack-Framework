@@ -75,6 +75,23 @@ class Ebor_Options {
 			'options' => $options
 		);
 	}
+
+	/**
+	 * Custom mrancho remove or overrite default section and panels settings
+	 * Remove the section and panels from the Customizer.
+	 * @param $wp_customize WP_Customize_Manager
+	 */
+	public function ebor_theme_customize($wp_customize) {
+		global $wp_customize;
+	    /* Change priority of WordPress dafault sections - higher priority moves to last */
+	    $wp_customize->get_section( 'title_tagline' )->priority = 600;
+	    $wp_customize->get_panel( 'nav_menus' )->priority = 620;
+	    //$wp_customize->get_panel( 'widgets' )->priority = 630;
+		$wp_customize->get_section( 'static_front_page' )->priority = 640;
+
+		$wp_customize->remove_section( 'colors' );
+		$wp_customize->remove_section('background_image');
+	}
 	
 	/**
 	 * Finally, run through our array and build theme options!

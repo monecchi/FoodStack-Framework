@@ -4,7 +4,7 @@
 Plugin Name: Foodstack Framework
 Plugin URI: http://www.plandesign.com.br
 Description: Derived from Ebor Framework by TommusRhodus Theme, this alternate version was specially crafted for WooCommerce Restaurant & Food Store websites
-Version: 1.1.8
+Version: 1.3.5
 Author: Adriano Monecchi
 Author URI: http://www.plandesign.com.br
 */	
@@ -13,7 +13,7 @@ Author URI: http://www.plandesign.com.br
  * Plugin definitions
  */
 define( 'EBOR_FRAMEWORK_PATH', trailingslashit(plugin_dir_path(__FILE__)) );
-define( 'EBOR_FRAMEWORK_VERSION', '1.1.8');
+define( 'EBOR_FRAMEWORK_VERSION', '1.3.5');
 
 /**
  * Styles & Scripts
@@ -62,6 +62,12 @@ if(!( function_exists('ebor_ajax_import_data') )){
 	}
 	add_action('wp_ajax_ebor_ajax_import_data', 'ebor_ajax_import_data');
 }
+
+/**
+ * Theme updates
+ */
+//custom mrancho
+//require_once( EBOR_FRAMEWORK_PATH . 'envato-wp-updater/updater-init.php' );
 
 /**
  * Plugin Updates

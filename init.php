@@ -1,6 +1,20 @@
 <?php 
 
 /**
+ * Custom FoodStack FrameWork - Loads the plugin language files.
+ *
+ * @since 1.0.0
+ */
+function foodstack_framework_load_textdomain() {
+	
+	$domain = 'ebor-framework';
+	$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
+	load_textdomain( $domain, WP_LANG_DIR . '/' . $domain . '/' . $domain . '-' . $locale . '.mo' );
+	load_plugin_textdomain( $domain, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+add_action( 'init', 'foodstack_framework_load_textdomain' );
+
+/**
  * Grab our framework options as registered by the theme.
  * If ebor_framework_options isn't set then we'll pull a list of defaults.
  * By default everything is turned off.
@@ -18,6 +32,7 @@ $defaults = array(
 	'class_post_type'       => '0',
 	'service_post_type'     => '0',
 	'case_study_post_type'  => '0',
+	'career_post_type'      => '0',
 	'mega_menu'             => '0',
 	'aq_resizer'            => '0',
 	'page_builder'          => '0',
@@ -38,7 +53,9 @@ $defaults = array(
 	'partner_vc_shortcodes'    => '0',
 	'ryla_vc_shortcodes'       => '0',
 	'morello_vc_shortcodes'    => '0',
-	'hive_vc_shortcodes'       => '0'
+	'hive_vc_shortcodes'       => '0',
+	'pillar_vc_shortcodes'     => '0',
+	'stack_vc_shortcodes'      => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -46,7 +63,7 @@ $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defau
  * Getting started instructions
  */
 if( is_admin() ){
-	require_once( EBOR_FRAMEWORK_PATH  . 'getting_started.php' );
+	//require_once( EBOR_FRAMEWORK_PATH  . 'getting_started.php' );
 }
 
 /**
@@ -71,8 +88,8 @@ if( '1' == $framework_options['metaboxes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'metaboxes/init.php' );
 }
 
-// Check for custom CMB2 add-ons and extensions	plugins
-	if(!( class_exists( 'PW_CMB2_Field_Select2' ) ) )
+// Check for custom CMB2 add-ons and extensions	plugins // custom mrancho
+	if(!( class_exists( 'PW_CMB2_Field_Select2' ) ) ) {
 	require_once( EBOR_FRAMEWORK_PATH . 'metaboxes/add-ons/cmb-field-select2/cmb-field-select2.php' );
 }
 
@@ -95,6 +112,10 @@ if( '1' == $framework_options['options'] ){
  */
 if( '1' == $framework_options['pivot_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'shortcodes/pivot-shortcodes.php' );	
+}
+// mrancho custom shortcodes
+if( '1' == $framework_options['pivot_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'shortcodes/pivot-shortcodes-custom.php' );	
 }
 if( '1' == $framework_options['elemis_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'shortcodes/elemis-shortcodes.php' );	
@@ -123,6 +144,12 @@ if( '1' == $framework_options['morello_vc_shortcodes'] ){
 }
 if( '1' == $framework_options['hive_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/hive/init.php' );	
+}
+if( '1' == $framework_options['pillar_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/pillar/init.php' );	
+}
+if( '1' == $framework_options['stack_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/init.php' );	
 }
 
 /**
@@ -232,6 +259,14 @@ if( '1' == $framework_options['case_study_post_type'] ){
 if( '1' == $framework_options['service_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_service', 10  );
 	add_action( 'init', 'ebor_framework_create_service_taxonomies', 10  );
+}
+
+/**
+ * Register career Post Type
+ */
+if( !( post_type_exists('career') ) && '1' == $framework_options['career_post_type'] ){
+	add_action( 'init', 'ebor_framework_register_career', 10  );
+	add_action( 'init', 'ebor_framework_create_career_taxonomies', 10  );
 }
 
 /**
