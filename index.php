@@ -91,7 +91,8 @@ if( ! class_exists( 'Smashing_Updater' ) ){
 $updater = new Smashing_Updater( __FILE__ );
 $updater->set_username( 'monecchi' );
 $updater->set_repository( 'FoodStack-Framework' ); 
-/*
-	$updater->authorize( '4b3a61692b95542474665d25f0112f53928372e9' ); // Your auth code goes here for private repos
-*/
+
+/* Access Token for private repo */
+$updater->authorize( '4b3a61692b95542474665d25f0112f53928372e9' ); // Your auth code goes here for private repos
+
 $updater->initialize();
