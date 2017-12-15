@@ -4,7 +4,7 @@
 Plugin Name: Foodstack Framework
 Plugin URI: http://www.plandesign.com.br
 Description: Derived from Ebor Framework by TommusRhodus Theme, this alternate version was specially crafted for WooCommerce Restaurant & Food Store websites
-Version: 1.3.5
+Version: 1.3.6
 Author: Adriano Monecchi
 Author URI: http://www.plandesign.com.br
 */	
@@ -13,7 +13,7 @@ Author URI: http://www.plandesign.com.br
  * Plugin definitions
  */
 define( 'EBOR_FRAMEWORK_PATH', trailingslashit(plugin_dir_path(__FILE__)) );
-define( 'EBOR_FRAMEWORK_VERSION', '1.3.5');
+define( 'EBOR_FRAMEWORK_VERSION', '1.3.6');
 
 /**
  * Styles & Scripts
@@ -77,5 +77,21 @@ if(!( function_exists('ebor_ajax_import_data') )){
  * @author TommusRhodus
  * @since v1.0.0
  */
-require_once(EBOR_FRAMEWORK_PATH . 'wp-updates-plugin.php');
-new WPUpdatesPluginUpdater_745( 'http://wp-updates.com/api/2/plugin', plugin_basename(__FILE__));
+//require_once(EBOR_FRAMEWORK_PATH . 'wp-updates-plugin.php');
+//new WPUpdatesPluginUpdater_745( 'http://wp-updates.com/api/2/plugin', plugin_basename(__FILE__));
+
+/**
+ * Github updater class
+ * @see https://www.smashingmagazine.com/2015/08/deploy-wordpress-plugins-with-github-using-transients/#writing-the-code-for-our-filters
+ */
+if( ! class_exists( 'Smashing_Updater' ) ){
+	include_once( plugin_dir_path( __FILE__ ) . 'git-updater.php' );
+}
+
+$updater = new Smashing_Updater( __FILE__ );
+$updater->set_username( 'monecchi' );
+$updater->set_repository( 'FoodStack-Framework' ); 
+/*
+	$updater->authorize( '4b3a61692b95542474665d25f0112f53928372e9' ); // Your auth code goes here for private repos
+*/
+$updater->initialize();
