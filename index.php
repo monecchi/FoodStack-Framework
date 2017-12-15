@@ -1,13 +1,17 @@
 <?php
 
 /*
-Plugin Name: Foodstack Framework
-Plugin URI: https://github.com/monecchi/FoodStack-Framework
-Description: Derived from Ebor Framework by TommusRhodus Theme, this alternate version was specially crafted for WooCommerce Restaurant & Food Store websites
-Version: 1.3.8
-Author: Adriano Monecchi
-Author URI: http://www.plandesign.com.br
-*/	
+Plugin Name:  Foodstack Framework
+Plugin URI:   https://github.com/monecchi/FoodStack-Framework https://github.com/monecchi/FoodStack-Framework/archive/master.zip
+Description:  Derived from Ebor Framework by TommusRhodus Theme, this alternate version was specially crafted for WooCommerce Restaurant & Food Store websites
+Version:      1.3.8
+Author:       Adriano Monecchi
+Author URI:   http://www.plandesign.com.br/
+License:      GPL2
+License URI:  https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:  ebor-framework
+Domain Path:  /languages
+*/
 
 /**
  * Plugin definitions
