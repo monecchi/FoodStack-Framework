@@ -1,9 +1,9 @@
 <?php
 /**
  * How To Deploy WordPress Plugins With GitHub Using Transients
- * @see  https://www.smashingmagazine.com/2015/08/deploy-wordpress-plugins-with-github-using-transients/#writing-the-code-for-our-filters [<description>]
+ * @see https://www.smashingmagazine.com/2015/08/deploy-wordpress-plugins-with-github-using-transients/#writing-the-code-for-our-filters [<description>]
  */
-class Smashing_Updater {
+class Github_Updater {
 
 	private $file;
 
@@ -115,16 +115,21 @@ class Smashing_Updater {
 
 				$this->get_repository_info(); // Get our repo info
 
+				date_default_timezone_set('America/Sao_Paulo');
+
+				$date_added = new DateTime( $this->github_response['created_at'] );  // convert UNIX timestamp to PHP DateTime
+				$date_added->format('Y-m-d'); // output = 2017-12-15
+
 				// Set it to an array
 				$plugin = array(
 					'name'				=> $this->plugin["Name"],
 					'slug'				=> $this->basename,
-					'requires'			=> '3.3.8',
-					'tested'			=> '3.3.5',
+					'requires'			=> '4.5.2',
+					'tested'			=> '4.9.1',
 					'rating'			=> '100.0',
 					'num_ratings'		=> '10823',
 					'downloaded'		=> '14249',
-					'added'				=> '2017-12-15',
+					'added'				=> $date_added, //'2017-12-15',
 					'version'			=> $this->github_response['tag_name'],
 					'author'			=> $this->plugin["AuthorName"],
 					'author_profile'	=> $this->plugin["AuthorURI"],
