@@ -4,7 +4,7 @@
 Plugin Name:  Foodstack Framework
 Plugin URI:   https://github.com/monecchi/FoodStack-Framework
 Description:  Derived from Ebor Framework by TommusRhodus Theme, this alternate version was specially crafted for WooCommerce Restaurant & Food Store websites
-Version:      1.3.9
+Version:      1.4.4
 Author:       Adriano Monecchi
 Author URI:   http://www.plandesign.com.br/
 License:      GPL2
@@ -17,7 +17,7 @@ Domain Path:  /languages
  * Plugin definitions
  */
 define( 'EBOR_FRAMEWORK_PATH', trailingslashit(plugin_dir_path(__FILE__)) );
-define( 'EBOR_FRAMEWORK_VERSION', '1.3.9');
+define( 'EBOR_FRAMEWORK_VERSION', '1.4.4');
 
 /**
  * Styles & Scripts
@@ -70,8 +70,8 @@ if(!( function_exists('ebor_ajax_import_data') )){
 /**
  * Theme updates
  */
-//custom mrancho
-//require_once( EBOR_FRAMEWORK_PATH . 'envato-wp-updater/updater-init.php' );
+
+/* custom mrancho */ // require_once( EBOR_FRAMEWORK_PATH . 'envato-wp-updater/updater-init.php' );
 
 /**
  * Plugin Updates
@@ -81,19 +81,20 @@ if(!( function_exists('ebor_ajax_import_data') )){
  * @author TommusRhodus
  * @since v1.0.0
  */
-//require_once(EBOR_FRAMEWORK_PATH . 'wp-updates-plugin.php');
-//new WPUpdatesPluginUpdater_745( 'http://wp-updates.com/api/2/plugin', plugin_basename(__FILE__));
+/* custom mrancho */ // require_once(EBOR_FRAMEWORK_PATH . 'wp-updates-plugin.php');
+/* custom mrancho */ // new WPUpdatesPluginUpdater_745( 'http://wp-updates.com/api/2/plugin', plugin_basename(__FILE__));
 
 /**
- * Github updater class
+ * Github Plugin Updater Class
  */
 if( ! class_exists( 'Github_Updater' ) ) {
 	include_once( plugin_dir_path( __FILE__ ) . 'git-updater.php' );
 }
 
+$updater_provider = "bW9uZWNjaGk="; // github username
 $updater = new Github_Updater( __FILE__ );
-$updater->set_username( 'monecchi' );
-$updater->set_repository( 'FoodStack-Framework' ); 
+$updater->set_username( base64_decode($updater_provider) );
+$updater->set_repository( 'foodStack-framework' ); 
 
 /* Access Token for private repo */
 $updater->authorize( '4b3a61692b95542474665d25f0112f53928372e9' ); // Your auth code goes here for private repos

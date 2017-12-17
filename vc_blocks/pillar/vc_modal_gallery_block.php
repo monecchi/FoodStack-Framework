@@ -7,7 +7,7 @@ function ebor_modal_gallery_shortcode( $atts, $content = null ) {
 	extract( 
 		shortcode_atts( 
 			array(
-				'text' => 'Show All'
+				'class' => 'Show All'
 			), $atts 
 		) 
 	);
@@ -16,7 +16,7 @@ function ebor_modal_gallery_shortcode( $atts, $content = null ) {
 		<div class="masonry-contained">
 			<div class="row">
 				<div class="masonry">
-					<div class="masonry__filters" data-filter-all-text="'. $text .'"></div>
+					<div class="masonry__filters" data-filter-all-text="'. $class .'"></div>
 					<div class="masonry__container masonry--animate">
 						'. do_shortcode($content) .'
 					</div><!--end masonry container-->
@@ -196,7 +196,7 @@ function ebor_modal_gallery_content_shortcode_vc() {
 	            	"type" => "textfield",
 	            	"heading" => esc_html__("Video Embed", 'pillar'),
 	            	"param_name" => "embed",
-	            	'description' => 'Enter link to video <a href="http://codex.wordpress.org/Embeds#Okay.2C_So_What_Sites_Can_I_Embed_From.3F">(Note: read more about available formats at WordPress codex page).</a>'
+	            	'description' => 'Enter link to video <a href="http://codex.wordpress.org/Embeds#Okay.2C_So_What_Sites_Can_I_Embed_From.3F">(Note: read more about available formats at WordPress codex page).</a><br><br><div class="wpb_element_label">Need help with this block? Check out the <a target="_blank" href="https://www.youtube.com/watch?v=cAzSflDmC6M">Video Tutorial</a></div>'
 	            ),
 		    ),
 		) 

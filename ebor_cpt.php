@@ -26,7 +26,29 @@ function ebor_framework_cpt_init(){
 if(!( function_exists('ebor_framework_cpt_add_options_page') )){
     function ebor_framework_cpt_add_options_page(){
         $theme = wp_get_theme();
-        add_options_page( $theme->get( 'Name' ) . ' Post Type Options', $theme->get( 'Name' ) . ' Post Type Options', 'manage_options', __FILE__, 'ebor_framework_cpt_render_form');
+        //add_options_page( $theme->get( 'Name' ) . ' Post Type Options', $theme->get( 'Name' ) . ' Post Type Options', 'manage_options', __FILE__, 'ebor_framework_cpt_render_form');
+        $ebor_admin_page = add_options_page( $theme->get( 'Name' ) .  __( ' CPT Options', 'pivot' ), $theme->get( 'Name' ) .  __( ' CPT Options', 'pivot' ), 'manage_options', __FILE__, 'ebor_framework_cpt_render_form');
+
+        // Adds ebor_help_tab when ebor_framework_cpt_add_options_page loads
+        add_action('load-'.$ebor_admin_page, 'ebor_admin_add_help_tab');
+    }
+}
+
+// Add Help Tab with instructions
+if(!( function_exists('ebor_admin_add_help_tab') )){
+    function ebor_admin_add_help_tab() {
+        $screen = get_current_screen();
+
+        $permalinks_url = '<a href="options-permalink.php">';
+
+    // Add my_help_tab if current screen is My Admin Page
+        $screen->add_help_tab( array(
+            'id'    => 'ebor_help_tab',
+            'title' => __('Instructions', 'ebor-framework'),
+            'content'   => '<p>' . __( 'Enter the URL slug you want to use for the registered post types bellow.', 'ebor-framework') . '</p>',
+                           '<p>' . __( 'DO-NOT: use numbers, spaces, capital letters or special characters.', 'ebor-framework') . '</p>',
+                           
+        ) );
     }
 }
 
@@ -36,65 +58,168 @@ function ebor_framework_cpt_render_form() {
 ?>
 
 <div class="wrap">
-    <!-- Display Plugin Icon, Header, and Description -->
-    <div class="title_line" style="margin-bottom:10px">
-        <h2><span class="dashicons dashicons-align-left" style="width:35px; height:35px; vertical-align:middle; font-size:35px;"></span> <?php echo $theme->get( 'Name' ) . __(' Custom Post Type Settings','ebor-framework'); ?></h2>
-    </div>
-    <div class="section panel" style="padding: 20px;">
-        <div class="wrap">
-            <!-- Beginning of the Plugin Options Form -->
-            <form method="post" action="options.php">
-                <?php settings_fields('ebor_framework_cpt_plugin_display_options'); ?>
-                <?php $displays = get_option('ebor_framework_cpt_display_options'); ?>
-                <table class="form-table">
-                    <h1>Instructions:</h1>
-                    <div class="notifier" style="width:100%; border: 1px solid #f7f7f7; margin-top: 10px; padding: 10px; color: #343A3C; background: #fafafa;">
-                    <h3>Enter the URL slug you want to use for the registered post types bellow. <strong>DO-NOT: use numbers, spaces, capital letters or special characters.</strong></h3>
-                        <h4>When you make any changes in this plugin, be sure to visit <a href="options-permalink.php">Your Permalink Settings</a> & click the <code>'Save Changes'</code> button to refresh & re-write your permalinks, otherwise your changes will not take effect properly.</h4>
-                    </div>
-                    <!-- Checkbox Buttons -->
-                    <hr />
-                    <h1>Registered Post Types:</h1>
-                    <tr valign="top">
-                        <th><label for="portfolio"><?php _e( 'Post Type: Portfolio', 'pivot' ); ?></label></th>
-                        <td>
-                            <label for="portfolio">Portfolio slug: <input id="portfolio" type="text" size="30" name="ebor_framework_cpt_display_options[portfolio_slug]" value="<?php echo $displays['portfolio_slug']; ?>" placeholder="portfolio" /> <small>E.g. <code>works</code> or <code>projects</code> could be used as the url slug for the 'portfolio' post type.<small></label>
-<br />
-                            <br /><p>If you leave the field blank, <code>portfolio</code> is set as the default url slug.<br /> You can use any words as long as you follow the url slug pattern mentioned in the above instructions. E.g. entering <code>works</code> would result in <b>www.website.com/works</b> becoming the URL to your portfolio.</p>
-                            <hr />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><label for="team"><?php _e( 'Post Type: Team', 'pivot' ); ?></label></th>
-                        <td>
-                            <label for="team">Team slug: <input id="team" type="text" size="30" name="ebor_framework_cpt_display_options[team_slug]" value="<?php echo $displays['team_slug']; ?>" placeholder="team" /> <small>E.g. <code>staff</code> or <code>founders</code> could be used as the url slug for the 'team' post type.<small></label>
-<br />
-                            <br /><p>If you leave the field blank, <code>team</code> is set as the default url slug. <br /> You can use any word as long as you follow the url slug pattern mentioned above. E.g. entering <code>staff</code> would result in <b>www.website.com/staff</b> becoming the URL to your team post type.</p>
-                            <hr />
-                        </td>
-                    </tr>
-                    <br />
-                    <br />
-                    <tr>
-                        <th><label for="food-menu"><span class="dashicons dashicons-carrot" style="width:25px; height:25px; vertical-align:middle; font-size:25px;"></span> <?php _e( 'Food Menu', 'pivot' ); ?> <small><?php _e( 'Post Type', 'pivot' ); ?></small> </label></th>
-                        <td>
-                            <label for="food-menu">Food Menu slug: <input id="food-menu" type="text" size="30" name="ebor_framework_cpt_display_options[food_menu_slug]" value="<?php echo $displays['food_menu_slug']; ?>" placeholder="food_menu" /> <small> If you leave the field blank, <code>food_menu</code> is set as the default url slug.</small></label>
-<br />
-                           <br /><p>The words <code>snacks</code> or <code>burguers</code> could be used as the url slug for the <strong>food_menu</strong> post type. You can use any word as long as you follow the url slug pattern mentioned in the above instructions. <br /> E.g. entering <code>cardapio</code> would result in <b>www.website.com/cardapio</b> becoming the URL to your team post type.</p>
-                            <hr />
-                            <p><b>Food Menu Post Type Extra Customization Options.</b><br /> Use the settings bellow to change the url slug for both <strong>Food Menu Categories & Food Tags</strong>.</p>
-                            <br />
-                            <label for="food-menu-cat">Food Menu Categories: <input id="food-menu-cat" type="text" size="30" name="ebor_framework_cpt_display_options[food_cat_slug]" value="<?php echo $displays['food_cat_slug']; ?>" placeholder="food_menu_categories" /></label>
-<hr />
-                            <p><b>Hack Tip:</b> Setting the same slug for the <code>food_menu</code> post type and for the <code>food_menu_categories</code> taxonomy will force wordpress to redirect to <code>cardapio/food-menu-category-slug</code>, this hack helps you to set up pages with the same slugs as the categories so you can filter your posts within those pages, so instead of displaying the taxonomy-term.php template you'll be displaying a custom page that will end up with the same slug as the custom taxonomy categories.</p>
-                            <br />
 
-                            <label for="food-menu-tag">Food Menu Tags: <input id="food-menu-tag" type="text" size="30" name="ebor_framework_cpt_display_options[food_tag_slug]" value="<?php echo $displays['food_tag_slug']; ?>" placeholder="food_tag" /></label>
-<br />
-                            <br /><p>If you leave the field blank, <code>food_menu_categories</code> is set as the default url slug. You can use any word as long as you follow the url slug pattern mentioned in the above instructions.<br /> E.g. entering <code>especialidades</code> would result in <b>www.website.com/especialidades/pizzas-tradicionais</b> becoming the URL to your Food Menu Categories taxonomy.</p>
-                            <hr />
-                        </td>
-                    </tr>
+    <!-- Plugin Header -->
+    <div class="title_line" style="margin-bottom:10px">
+        <h2>
+            <span class="dashicons dashicons-align-left" style="width:35px; height:35px; vertical-align:middle; font-size:35px;">
+            </span>
+            <?php echo $theme->get( 'Name' ) . __(' Custom Post Type Settings','ebor-framework'); ?>
+        </h2>
+    </div>
+
+    <div class="section panel" style="padding: 20px;">
+    <div class="wrap">
+
+    <!-- Start Plugin Options Form -->
+    <form method="post" action="options.php">
+    <?php settings_fields('ebor_framework_cpt_plugin_display_options'); ?>
+    <?php $displays = get_option('ebor_framework_cpt_display_options'); ?>
+
+    <table class="form-table">
+    <h1><?php _e( 'Instructions:', 'ebor-framework' ); ?></h1>
+
+    <div class="notifier" style="border: 1px solid #f7f7f7; margin-top: 10px; padding: 10px; color: #343A3C; background: #fafafa;">
+    <h4>Enter the URL slug you want to use for the registered post types bellow. <strong>DO-NOT: use numbers, spaces, capital letters or special characters.</strong></h4>
+        <p>When you make any changes in this plugin, be sure to visit <a href="options-permalink.php">Your Permalink Settings</a> and click the <code>'Save Changes'</code> button to refresh <?php echo esc_attr('&'); ?> re-write your permalinks, otherwise your changes will not take effect properly.</p>
+    </div>
+
+    <h2><?php _e( 'Registered Post Types:', 'ebor-framework' ); ?></h2>
+
+
+    <!-- Food Menu slug -->
+    <div class="plugin-card plugin-card-wp-super-cache" style="width: 100% !important; margin-left: 0 !important;">
+        <div class="plugin-card-top">
+
+            <div class="post-type-name">
+                <h3><?php _e( 'Food Menu Post Type', 'ebor-framework' ); ?></h3>
+            </div>
+
+            <div class="action-links">
+                <ul class="plugin-action-buttons">
+                    <li>
+                        <?php submit_button('Save Options'); ?>
+                    </li>
+                </ul>                
+            </div>
+
+            <div class="column-description">
+                <label for="food-menu"><b><?php _e( 'Food Menu Post Type slug: ', 'ebor-framework' ); ?></b></label>
+                <input id="food-menu" type="text" size="30" name="ebor_framework_cpt_display_options[food_menu_slug]" value="<?php echo $displays['food_menu_slug']; ?>" placeholder="food_menu" /> <small>E.g. <code>snacks</code> or <code>burguers</code> could be used as the url slug for the 'food_menu' post type.</small>
+                <br />
+                <br />
+                   
+                <p class="authors">Test URL: <code><?php $url = get_site_url(null, $displays['food_menu_slug'], null ); echo esc_url($url); ?></code></p>
+
+            </div>
+
+        </div>
+
+        <!-- Food Menu custom taxonomy term slug -->
+        <div class="plugin-card-top">
+
+            <div class="post-type-name">
+                <h3><?php _e( 'Food Menu - Taxonomy Terms', 'ebor-framework' ); ?></h3>
+            </div>
+
+            <div class="column-description">
+                <label for="food-menu-cat"><b><?php _e( 'Food Menu Categories slug:', 'ebor-framework' ); ?></b></label>
+                <input id="food-menu-cat" type="text" size="30" name="ebor_framework_cpt_display_options[food_cat_slug]" value="<?php echo $displays['food_cat_slug']; ?>" placeholder="food_menu_categories" /> <small>E.g. <code>specialties</code> overrides default <code>food_menu_categories</code> custom taxonomy term's slug.</small>
+            </div>
+
+            <br />
+            <br />
+
+        <!-- Food Menu custom taxonomy term slug -->
+            <div class="column-description">
+                <label for="food-menu-tag"><b><?php _e( 'Food Menu (Food Tags) slug:', 'ebor-framework' ); ?></b></label>
+                <input id="food-menu-tag" type="text" size="30" name="ebor_framework_cpt_display_options[food_tag_slug]" value="<?php echo $displays['food_tag_slug']; ?>" placeholder="food_tag" /> <small>E.g. <code>ingredients</code> overrides default <code>food_tag</code> custom taxonomy term's slug.</small>
+                <br />
+                <br />
+
+                <p><b>Hack Tip:</b> Setting the same slug for the <code>food_menu</code> post type and for the <code>food_menu_categories</code> taxonomy will force wordpress to redirect to <code>cardapio/food-menu-category-slug</code>, this hack helps you to set up pages with the same slugs as the categories so you can filter your posts within those pages, so instead of displaying the taxonomy-term.php template you'll be displaying a custom page that will end up with the same slug as the custom taxonomy categories.</p>
+                <br />
+
+            </div>
+
+        </div>
+
+
+
+        <div class="plugin-card-bottom">
+            <p>If you leave the field blank, <code>food_menu</code> is set as the default url slug for <b>food_menu</b> post type. Also, as default, <code>food_menu_categories</code> and <code>food_tag</code> are set for food_menu post type custom taxonomy terms (categories and tags). E.g. entering <code>menu</code> would result in <b><?php echo get_site_url( null, '/menu', null ); ?></b> becoming the URL to your food menu post type.
+            </p>
+        </div>
+    </div>
+
+    <!-- Portoflio slug -->
+    <div class="plugin-card plugin-card-wp-super-cache" style="width: 100% !important; margin-left: 0 !important;">
+        <div class="plugin-card-top">
+
+            <div class="post-type-name">
+                <h3><?php _e( 'Portfolio Post Type', 'ebor-framework' ); ?></h3>
+            </div>
+
+            <div class="action-links">
+                <ul class="plugin-action-buttons">
+                    <li>
+                        <?php submit_button('Save Options'); ?>
+                    </li>
+                </ul>                
+            </div>
+
+            <div class="column-description">
+                <label for="portfolio"><b><?php _e( 'Portfolio slug: ', 'ebor-framework' ); ?></b></label>
+                <input id="portfolio" type="text" size="30" name="ebor_framework_cpt_display_options[portfolio_slug]" value="<?php echo $displays['portfolio_slug']; ?>" placeholder="portfolio" /> <small>E.g. <code>works</code> or <code>projects</code> could be used as the url slug for the 'portfolio' post type.</small>
+                <br />
+                <br />
+                   
+                <p class="authors">Test URL: <code><?php $url = get_site_url(null, $displays['portfolio_slug'], null ); echo esc_url($url); ?></code></p>
+
+            </div>
+
+        </div>
+
+        <div class="plugin-card-bottom">
+            <p>If you leave the field blank, <code>portfolio</code> is set as the default url slug. You can use any words as long as you follow the url slug pattern mentioned in the above instructions.<br /> E.g. entering <code>works</code> would result in <b><?php echo get_site_url( null, '/works', null ); ?></b> becoming the URL to your portfolio.
+            </p>
+        </div>
+    </div>
+
+    <!-- Team slug -->
+    <div class="plugin-card plugin-card-wp-super-cache" style="width: 100% !important; margin-left: 0 !important;">
+        <div class="plugin-card-top">
+
+            <div class="post-type-name">
+                <h3><?php _e( 'Team Post Type', 'ebor-framework' ); ?></h3>
+            </div>
+
+            <div class="action-links">
+                <ul class="plugin-action-buttons">
+                    <li>
+                        <?php submit_button('Save Options'); ?>
+                    </li>
+                </ul>                
+            </div>
+
+            <div class="column-description">
+                <label for="team"><b><?php _e( 'Team slug: ', 'ebor-framework' ); ?></b></label>
+                <input id="team" type="text" size="30" name="ebor_framework_cpt_display_options[team_slug]" value="<?php echo $displays['team_slug']; ?>" placeholder="team" />
+                <small>E.g. <code>staff</code> or <code>founders</code> could be used as the url slug for the 'team' post type.</small>
+                <br />
+                <br />
+                   
+                <p class="authors">Test URL: <code><?php $url = get_site_url(null, $displays['team_slug'], null ); echo esc_url($url); ?></code></p>
+
+            </div>
+
+        </div>
+
+        <div class="plugin-card-bottom">
+            <p>If you leave the field blank, <code>team</code> is set as the default url slug. You can use any words as long as you follow the url slug pattern mentioned in the above instructions.<br /> E.g. entering <code>staff</code> would result in <b><?php echo get_site_url( null, '/staff', null ); ?></b> becoming the URL to your portfolio.
+            </p>
+        </div>
+    </div>
 
                 </table>
                 <?php submit_button('Save Options'); ?>

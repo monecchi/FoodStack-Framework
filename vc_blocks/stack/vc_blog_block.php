@@ -4,19 +4,25 @@
  * The Shortcode
  */
 function ebor_post_shortcode( $atts ) {
+	global $wp_query, $post, $paged;
+	
 	extract( 
 		shortcode_atts( 
 			array(
 				'pppage' => '4',
 				'filter' => 'all',
 				'layout' => 'list',
-				'custom_css_class' => ''
+				'custom_css_class' => '',
+				'paging' => 'false',
+				'arrows' => 'true',
+				'timing' => 'false'
 			), $atts 
 		) 
 	);
 	
-	//PAgination fix
-	global $paged;
+	if( 0 == $pppage || isset($wp_query->doing_blog_shortcode) ){
+		return false;	
+	}
 	
 	if( is_front_page() ) { 
 		$paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1; 
@@ -29,13 +35,34 @@ function ebor_post_shortcode( $atts ) {
 	 */
 	$query_args = array(
 		'post_type' => 'post',
-		'posts_per_page' => $pppage
+		'post_status' => 'publish',
+		'posts_per_page' => $pppage,
+		'paged' => $paged
 	);
 	
+	//Hide current post ID from the loop if we're in a singular view
+	if( is_single() && isset($post->ID) ){
+		$query_args['post__not_in']	= array($post->ID);
+	}
+	
 	if (!( $filter == 'all' )) {
-		if( function_exists( 'icl_object_id' ) ){
-			$filter = (int)icl_object_id( $filter, 'category', true);
+		
+		//Check for WPML
+		if( has_filter('wpml_object_id') ){
+			global $sitepress;
+			
+			//WPML recommended, remove filter, then add back after
+			remove_filter('terms_clauses', array($sitepress, 'terms_clauses'), 10, 4);
+			
+			$filterClass = get_term_by('slug', $filter, 'category');
+			$ID = (int) apply_filters('wpml_object_id', (int) $filterClass->term_id, 'category', true);
+			$translatedSlug = get_term_by('id', $ID, 'category');
+			$filter = $translatedSlug->slug;
+			
+			//Adding filter back
+			add_filter('terms_clauses', array($sitepress, 'terms_clauses'), 10, 4);
 		}
+		
 		$query_args['tax_query'] = array(
 			array(
 				'taxonomy' => 'category',
@@ -43,12 +70,18 @@ function ebor_post_shortcode( $atts ) {
 				'terms' => $filter
 			)
 		);
+		
 	}
 	
-	global $wp_query, $post;
 	$old_query = $wp_query;
 	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
+	$wp_query->{"slider_options"} = array(
+		'paging' => $paging,
+		'arrows' => $arrows,
+		'timing' => $timing
+	);
+	$wp_query->{"doing_blog_shortcode"} = 'true';
 	
 	ob_start();
 	

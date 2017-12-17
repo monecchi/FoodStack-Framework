@@ -4,23 +4,40 @@
  * The Shortcode
  */
 function ebor_product_shortcode( $atts ) {
+	global $wp_query, $post;
+	
 	extract( 
 		shortcode_atts( 
 			array(
 				'pppage' => '4',
 				'filter' => 'all',
 				'layout' => 'column-2',
-				'custom_css_class' => ''
+				'custom_css_class' => '',
+				'paging' => 'true',
+				'arrows' => 'false',
+				'timing' => 'false'
 			), $atts 
 		) 
 	);
+	
+	if( 0 == $pppage || isset($wp_query->doing_product_shortcode) ){
+		return false;	
+	}
+	
+	if( is_front_page() ) { 
+		$paged = ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1; 
+	} else { 
+		$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; 
+	}
 	
 	/**
 	 * Setup post query
 	 */
 	$query_args = array(
 		'post_type' => 'product',
-		'posts_per_page' => $pppage
+		'post_status' => 'publish',
+		'posts_per_page' => $pppage,
+		'paged' => $paged
 	);
 	
 	if (!( $filter == 'all' )) {
@@ -36,10 +53,15 @@ function ebor_product_shortcode( $atts ) {
 		);
 	}
 	
-	global $wp_query, $post;
 	$old_query = $wp_query;
 	$old_post = $post;
 	$wp_query = new WP_Query( $query_args );
+	$wp_query->{"slider_options"} = array(
+		'paging' => $paging,
+		'arrows' => $arrows,
+		'timing' => $timing
+	);
+	$wp_query->{"doing_product_shortcode"} = 'true';
 	
 	ob_start();
 	

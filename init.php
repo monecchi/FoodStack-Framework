@@ -1,4 +1,21 @@
-<?php 
+<?php
+
+function ebor_framework_clean_theme_options(){
+	$existing_options = get_option('ebor_framework_options');
+	if( is_array($existing_options) ){
+		foreach ($existing_options as $key => $value) {
+			$existing_options[$key] = '0';
+		}
+		update_option('ebor_framework_options', $existing_options);
+	}
+}
+
+if ( 
+	is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ||
+	is_admin() && isset( $_GET['theme'] ) && $pagenow == 'customize.php'
+){
+	add_action( 'after_setup_theme', 'ebor_framework_clean_theme_options', 0 );
+}
 
 /**
  * Custom FoodStack FrameWork - Loads the plugin language files.
@@ -20,42 +37,47 @@ add_action( 'init', 'foodstack_framework_load_textdomain' );
  * By default everything is turned off.
  */
 $defaults = array(
-	'pivot_shortcodes'      => '0',
-	'pivot_widgets'         => '0',
-	'food_menu_post_type'   => '0', // Meu Rancho Custom Food Menu Post Type
-	'portfolio_post_type'   => '0',
-	'team_post_type'        => '0',
-	'client_post_type'      => '0',
-	'testimonial_post_type' => '0',
-	'faq_post_type'         => '0',
-	'menu_post_type'        => '0',
-	'class_post_type'       => '0',
-	'service_post_type'     => '0',
-	'case_study_post_type'  => '0',
-	'career_post_type'      => '0',
-	'mega_menu'             => '0',
-	'aq_resizer'            => '0',
-	'page_builder'          => '0',
-	'likes'                 => '0',
-	'options'               => '0',
-	'metaboxes'             => '0',
-	'elemis_widgets'        => '0',
-	'elemis_shortcodes'     => '0',
-	'keepsake_widgets'      => '0',
-	'morello_widgets'       => '0',
-	'meetup_widgets'        => '0',
-	'machine_widgets'       => '0',
-	'lumos_widgets'         => '0',
-	'foundry_widgets'       => '0',
-	'foundry_shortcodes'    => '0',
-	'malory_vc_shortcodes'  => '0',
+	'pivot_shortcodes'         => '0',
+	'pivot_widgets'            => '0',
+	'food_menu_post_type'      => '0', // Meu Rancho Custom Food Menu Post Type
+	'portfolio_post_type'      => '0',
+	'team_post_type'           => '0',
+	'client_post_type'         => '0',
+	'testimonial_post_type'    => '0',
+	'faq_post_type'            => '0',
+	'menu_post_type'           => '0',
+	'class_post_type'          => '0',
+	'service_post_type'        => '0',
+	'case_study_post_type'     => '0',
+	'career_post_type'         => '0',
+	'mega_menu'                => '0',
+	'aq_resizer'               => '0',
+	'page_builder'             => '0',
+	'likes'                    => '0',
+	'options'                  => '0',
+	'metaboxes'                => '0',
+	'elemis_widgets'           => '0',
+	'elemis_shortcodes'        => '0',
+	'keepsake_widgets'         => '0',
+	'morello_widgets'          => '0',
+	'meetup_widgets'           => '0',
+	'machine_widgets'          => '0',
+	'lumos_widgets'            => '0',
+	'foundry_widgets'          => '0',
+	'malefic_widgets'          => '0',
+	'foundry_shortcodes'       => '0',
+	'malory_vc_shortcodes'     => '0',
 	'peekskill_vc_shortcodes'  => '0',
 	'partner_vc_shortcodes'    => '0',
 	'ryla_vc_shortcodes'       => '0',
 	'morello_vc_shortcodes'    => '0',
 	'hive_vc_shortcodes'       => '0',
 	'pillar_vc_shortcodes'     => '0',
-	'stack_vc_shortcodes'      => '0'
+	'stack_vc_shortcodes'      => '0',
+	'malefic_vc_shortcodes'    => '0',
+	'waves_vc_shortcodes'      => '0',
+	'sugarland_vc_shortcodes'  => '0',
+	'foundry_vc_shortcodes'    => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -88,7 +110,10 @@ if( '1' == $framework_options['metaboxes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'metaboxes/init.php' );
 }
 
-// Check for custom CMB2 add-ons and extensions	plugins // custom mrancho
+/**
+ * Custom mrancho
+ * Check for CMB2 add-ons and extensions plugins
+ */
 	if(!( class_exists( 'PW_CMB2_Field_Select2' ) ) ) {
 	require_once( EBOR_FRAMEWORK_PATH . 'metaboxes/add-ons/cmb-field-select2/cmb-field-select2.php' );
 }
@@ -151,6 +176,18 @@ if( '1' == $framework_options['pillar_vc_shortcodes'] ){
 if( '1' == $framework_options['stack_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/stack/init.php' );	
 }
+if( '1' == $framework_options['malefic_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/malefic/init.php' );	
+}
+if( '1' == $framework_options['waves_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/waves/init.php' );	
+}
+if( '1' == $framework_options['sugarland_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/sugarland/init.php' );	
+}
+if( '1' == $framework_options['foundry_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/foundry/init.php' );	
+}
 
 /**
  * Register appropriate widgets
@@ -179,6 +216,9 @@ if( '1' == $framework_options['foundry_widgets'] ){
 if( '1' == $framework_options['morello_widgets'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'widgets/morello-widgets.php' );	
 }
+if( '1' == $framework_options['malefic_widgets'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'widgets/malefic-widgets.php' );	
+}
 
 /**
  * Register Food Menu Post Type // Custom FoodStack Framework // Mrancho
@@ -192,7 +232,7 @@ if( '1' == $framework_options['food_menu_post_type'] ){
 /**
  * Register Portfolio Post Type
  */
-if( '1' == $framework_options['portfolio_post_type'] ){
+if( !( post_type_exists('portfolio') ) && '1' == $framework_options['portfolio_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_portfolio', 10 );
 	add_action( 'init', 'ebor_framework_create_portfolio_taxonomies', 10  );
 }
@@ -200,7 +240,7 @@ if( '1' == $framework_options['portfolio_post_type'] ){
 /**
  * Register Team Post Type
  */
-if( '1' == $framework_options['team_post_type'] ){
+if( !( post_type_exists('team') ) && '1' == $framework_options['team_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_team', 10  );
 	add_action( 'init', 'ebor_framework_create_team_taxonomies', 10  );
 }
@@ -208,7 +248,7 @@ if( '1' == $framework_options['team_post_type'] ){
 /**
  * Register Client Post Type
  */
-if( '1' == $framework_options['client_post_type'] ){
+if( !( post_type_exists('client') ) && '1' == $framework_options['client_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_client', 10  );
 	add_action( 'init', 'ebor_framework_create_client_taxonomies', 10  );
 }
@@ -216,7 +256,7 @@ if( '1' == $framework_options['client_post_type'] ){
 /**
  * Register Testimonial Post Type
  */
-if( '1' == $framework_options['testimonial_post_type'] ){
+if( !( post_type_exists('testimonial') ) && '1' == $framework_options['testimonial_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_testimonial', 10  );
 	add_action( 'init', 'ebor_framework_create_testimonial_taxonomies', 10  );
 }
@@ -224,7 +264,7 @@ if( '1' == $framework_options['testimonial_post_type'] ){
 /**
  * Register faq Post Type
  */
-if( '1' == $framework_options['faq_post_type'] ){
+if( !( post_type_exists('faq') ) && '1' == $framework_options['faq_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_faq', 10  );
 	add_action( 'init', 'ebor_framework_create_faq_taxonomies', 10  );
 }
@@ -232,7 +272,7 @@ if( '1' == $framework_options['faq_post_type'] ){
 /**
  * Register Menu Post Type
  */
-if( '1' == $framework_options['menu_post_type'] ){
+if( !( post_type_exists('menu') ) && '1' == $framework_options['menu_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_menu', 10  );
 	add_action( 'init', 'ebor_framework_create_menu_taxonomies', 10  );
 }
@@ -240,7 +280,7 @@ if( '1' == $framework_options['menu_post_type'] ){
 /**
  * Register Class Post Type
  */
-if( '1' == $framework_options['class_post_type'] ){
+if( !( post_type_exists('class') ) && '1' == $framework_options['class_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_class', 10  );
 	add_action( 'init', 'ebor_framework_create_class_taxonomies', 10  );
 }
@@ -248,7 +288,7 @@ if( '1' == $framework_options['class_post_type'] ){
 /**
  * Register Case Study Post Type
  */
-if( '1' == $framework_options['case_study_post_type'] ){
+if( !( post_type_exists('case_study') ) && '1' == $framework_options['case_study_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_case_study', 10  );
 	add_action( 'init', 'ebor_framework_create_case_study_taxonomies', 10  );
 }
@@ -256,7 +296,7 @@ if( '1' == $framework_options['case_study_post_type'] ){
 /**
  * Register Service Post Type
  */
-if( '1' == $framework_options['service_post_type'] ){
+if( !( post_type_exists('service') ) && '1' == $framework_options['service_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_service', 10  );
 	add_action( 'init', 'ebor_framework_create_service_taxonomies', 10  );
 }
@@ -272,6 +312,6 @@ if( !( post_type_exists('career') ) && '1' == $framework_options['career_post_ty
 /**
  * Register Mega Menu Post Type
  */
-if( '1' == $framework_options['mega_menu'] ){
+if( !( post_type_exists('mega_menu') ) && '1' == $framework_options['mega_menu'] ){
 	add_action( 'init', 'ebor_framework_register_mega_menu', 10  );
 }
