@@ -27,28 +27,7 @@ if(!( function_exists('ebor_framework_cpt_add_options_page') )){
     function ebor_framework_cpt_add_options_page(){
         $theme = wp_get_theme();
         //add_options_page( $theme->get( 'Name' ) . ' Post Type Options', $theme->get( 'Name' ) . ' Post Type Options', 'manage_options', __FILE__, 'ebor_framework_cpt_render_form');
-        $ebor_admin_page = add_options_page( $theme->get( 'Name' ) .  __( ' CPT Options', 'pivot' ), $theme->get( 'Name' ) .  __( ' CPT Options', 'pivot' ), 'manage_options', __FILE__, 'ebor_framework_cpt_render_form');
-
-        // Adds ebor_help_tab when ebor_framework_cpt_add_options_page loads
-        add_action('load-'.$ebor_admin_page, 'ebor_admin_add_help_tab');
-    }
-}
-
-// Add Help Tab with instructions
-if(!( function_exists('ebor_admin_add_help_tab') )){
-    function ebor_admin_add_help_tab() {
-        $screen = get_current_screen();
-
-        $permalinks_url = '<a href="options-permalink.php">';
-
-    // Add my_help_tab if current screen is My Admin Page
-        $screen->add_help_tab( array(
-            'id'    => 'ebor_help_tab',
-            'title' => __('Instructions', 'ebor-framework'),
-            'content'   => '<p>' . __( 'Enter the URL slug you want to use for the registered post types bellow.', 'ebor-framework') . '</p>',
-                           '<p>' . __( 'DO-NOT: use numbers, spaces, capital letters or special characters.', 'ebor-framework') . '</p>',
-                           
-        ) );
+        add_options_page( $theme->get( 'Name' ) .  __( ' CPT Options', 'pivot' ), $theme->get( 'Name' ) .  __( ' CPT Options', 'pivot' ), 'manage_options', __FILE__, 'ebor_framework_cpt_render_form');
     }
 }
 
