@@ -93,7 +93,7 @@ if( ! class_exists( 'Github_Updater' ) ) {
 
 $updater_provider = "bW9uZWNjaGk="; // github username
 $updater = new Github_Updater( __FILE__ );
-$updater->set_username( base64_decode($updater_provider) );
+$updater->set_username( 'monecchi' );
 $updater->set_repository( 'FoodStack-Framework' ); 
 
 /* Access Token for private repo */
