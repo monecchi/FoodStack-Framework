@@ -2,7 +2,7 @@ Foodstack-Framework
 ==============
 
 Foodstack Framework - Derived from Ebor Framework by TommusRhodus, this alternate version has WooCommerce for Restaurant & Food Store websites in mind.
-==============
+
 
 ### To-do:
 
