@@ -129,7 +129,7 @@ class Github_Updater {
 					'rating'			=> '100.0',
 					'num_ratings'		=> '10823',
 					'downloaded'		=> '14249',
-					'added'				=> $date_added, //'2017-12-15',
+					'added'				=> '2017-12-15', // $date_added,
 					'version'			=> $this->github_response['tag_name'],
 					'author'			=> $this->plugin["AuthorName"],
 					'author_profile'	=> $this->plugin["AuthorURI"],
