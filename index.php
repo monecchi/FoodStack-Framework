@@ -4,7 +4,7 @@
 Plugin Name:  Foodstack Framework
 Plugin URI:   https://github.com/monecchi/FoodStack-Framework
 Description:  Derived from Ebor Framework by TommusRhodus Theme, this alternate version was specially crafted for WooCommerce Restaurant & Food Store websites
-Version:      1.4.4
+Version:      1.4.1
 Author:       Adriano Monecchi
 Author URI:   http://www.plandesign.com.br/
 License:      GPL2
@@ -17,7 +17,7 @@ Domain Path:  /languages
  * Plugin definitions
  */
 define( 'EBOR_FRAMEWORK_PATH', trailingslashit(plugin_dir_path(__FILE__)) );
-define( 'EBOR_FRAMEWORK_VERSION', '1.4.4');
+define( 'EBOR_FRAMEWORK_VERSION', '1.4.1');
 
 /**
  * Styles & Scripts
