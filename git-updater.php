@@ -115,10 +115,10 @@ class Github_Updater {
 
 				$this->get_repository_info(); // Get our repo info
 
-				//date_default_timezone_set('America/Sao_Paulo');
+				date_default_timezone_set('America/Sao_Paulo');
 
-				//$date_added = new DateTime( $this->github_response['created_at'] );  // convert UNIX timestamp to PHP DateTime
-				//$date_added->format('Y-m-d'); // output = 2017-12-15
+				$date_added = new DateTime( $this->github_response['created_at'] );  // convert UNIX timestamp to PHP DateTime
+				$date_added->format('Y-m-d'); // output = 2017-12-15
 
 				// Set it to an array
 				$plugin = array(
@@ -129,7 +129,7 @@ class Github_Updater {
 					'rating'			=> '100.0',
 					'num_ratings'		=> '10823',
 					'downloaded'		=> '14249',
-					'added'				=> '2017-12-15', // $date_added,
+					'added'				=> $date_added, //'2017-12-15',
 					'version'			=> $this->github_response['tag_name'],
 					'author'			=> $this->plugin["AuthorName"],
 					'author_profile'	=> $this->plugin["AuthorURI"],
