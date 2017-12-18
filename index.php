@@ -96,6 +96,6 @@ $updater->set_username( 'monecchi' );
 $updater->set_repository( 'FoodStack-Framework' ); 
 
 /* Access Token for private repo */
-$updater->authorize( '4b3a61692b95542474665d25f0112f53928372e9' ); // Your auth code goes here for private repos
+$updater->authorize( '6dbcb7c0a6851454531621e01ef094a7e0d95fd8' ); // Your auth code goes here for private repos
 
 $updater->initialize();

@@ -1,7 +1,7 @@
 <?php
 /**
  * How To Deploy WordPress Plugins With GitHub Using Transients
- * @see https://www.smashingmagazine.com/2015/08/deploy-wordpress-plugins-with-github-using-transients/#writing-the-code-for-our-filters [<description>]
+ * @see https://www.smashingmagazine.com/2015/08/deploy-wordpress-plugins-with-github-using-transients/#writing-the-code-for-our-filters
  */
 class Github_Updater {
 
