@@ -17,7 +17,7 @@ Domain Path:  /languages
  * Plugin definitions
  */
 define( 'EBOR_FRAMEWORK_PATH', trailingslashit(plugin_dir_path(__FILE__)) );
-define( 'EBOR_FRAMEWORK_VERSION', '1.4.11');
+define( 'EBOR_FRAMEWORK_VERSION', '1.4.12');
 
 /**
  * Styles & Scripts
