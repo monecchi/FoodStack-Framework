@@ -230,6 +230,71 @@ function ebor_framework_cpt_validate_display_options($input) {
 	
 }
 
+function ebor_framework_create_mrslider_taxonomies(){
+    $labels = array(
+        'name' => __( 'Slider Categories','ebor-framework' ),
+        'singular_name' => __( 'Slider Category','ebor-framework' ),
+        'search_items' =>  __( 'Search Slider Categories','ebor-framework' ),
+        'all_items' => __( 'All Slider Categories','ebor-framework' ),
+        'parent_item' => __( 'Parent Slider Category','ebor-framework' ),
+        'parent_item_colon' => __( 'Parent Slider Category:','ebor-framework' ),
+        'edit_item' => __( 'Edit Slider Category','ebor-framework' ), 
+        'update_item' => __( 'Update Slider Category','ebor-framework' ),
+        'add_new_item' => __( 'Add New Slider Category','ebor-framework' ),
+        'new_item_name' => __( 'New Slider Category Name','ebor-framework' ),
+        'menu_name' => __( 'Slider Categories','ebor-framework' ),
+      );    
+  register_taxonomy('mrslider_category', array('mrslider'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_in_rest' => true, // wheather or not to make the new custom post_type avaialble on WP REST API
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => true,
+  ));
+}
+
+function ebor_framework_register_mrsliders() {
+
+    $labels = array( 
+        'name' => __( 'Sliders', 'ebor-framework' ),
+        'singular_name' => __( 'Slide', 'ebor-framework' ),
+        'add_new' => __( 'Add New', 'ebor-framework' ),
+        'add_new_item' => __( 'Add New Slide', 'ebor-framework' ),
+        'edit_item' => __( 'Edit Slide', 'ebor-framework' ),
+        'new_item' => __( 'New Slide', 'ebor-framework' ),
+        'view_item' => __( 'View Slide', 'ebor-framework' ),
+        'search_items' => __( 'Search Slides', 'ebor-framework' ),
+        'not_found' => __( 'No slides found', 'ebor-framework' ),
+        'not_found_in_trash' => __( 'No slides found in Trash', 'ebor-framework' ),
+        'parent_item_colon' => __( 'Parent Slider:', 'ebor-framework' ),
+        'menu_name' => __( 'Sliders', 'ebor-framework' ),
+    );
+
+    $args = array( 
+        'labels' => $labels,
+        'hierarchical' => false,
+        'menu_icon' => 'dashicons-menu',
+        'description' => __('Slider entries.', 'ebor-framework'),
+        'supports' =>  array('title', 'thumbnail', 'excerpt'),
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 2,
+
+        'capability_type' => 'post',    
+        'publicly_queryable' => false,
+        'exclude_from_search' => true,
+        'has_archive' => false,
+        'query_var' => true,
+        'can_export' => true,
+        'rewrite' => array( 'slug' => 'mrslider', 'with_front' => false )
+    );
+
+    register_post_type( 'mrslider', $args );
+}
+
 function ebor_framework_register_mega_menu() {
 
     $labels = array( 
@@ -311,7 +376,8 @@ if( $displays['portfolio_slug'] ){ $slug = $displays['portfolio_slug']; } else {
         'query_var' => true,
         'can_export' => true,
         'rewrite' => array( 'slug' => $slug ),
-        'capability_type' => 'post'
+        'capability_type' => 'post',
+        'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ) // array( 'title', 'editor', 'author', 'thumbnail', 'post-formats', 'tags', 'excerpt', 'comments' )
     );
 
     register_post_type( 'portfolio', $args );
@@ -504,7 +570,7 @@ if( $displays['food_menu_slug'] ){ $slug = $displays['food_menu_slug']; } else {
         'menu_position'      => 5, //null,
         'menu_icon' => 'dashicons-images-alt2',
         'show_in_rest'       => true,
-        'rest_base'          => 'cardapios',
+        'rest_base'          => 'cardapios', // the post type as the wp api endpoint e.g /wp-json/wp/v2/cardapios/
         'rest_controller_class' => 'WP_REST_Posts_Controller',
         'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'tags', 'excerpt' ) // array( 'title', 'editor', 'author', 'thumbnail', 'post-formats', 'tags', 'excerpt', 'comments' )
     );

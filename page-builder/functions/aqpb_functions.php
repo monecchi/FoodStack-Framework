@@ -66,8 +66,8 @@ if(class_exists('AQ_Page_Builder')) {
 				$output = 'aq_span' . $block;
 				return $output;
 			}
-		}
-		
+		}	
+
 		/**
 		 * Use clearfix class?
 		 * true / false
@@ -105,11 +105,13 @@ if(class_exists('AQ_Page_Builder')) {
 				
 				$size = aq_css_classes($size);
 				$clearfix = ( aq_css_clearfix() ) ? 'clearfix' : '';
+
+			    $extra_css = (isset($block_extra_css) && !empty($block_extra_css)) ? $block_extra_css : ''; // custom mrancho css classes for <div id="aq-block-*>
 				
 				$column_class = $first ? 'aq-first' : '';
 				$column_class = $last ? $column_class.' aq-last' : $column_class;
 				
-				echo '<div id="aq-block-'.$template_id.'-'.$number.'" class="aq-block aq-block-'.$id_base.' '.$size.' '.$column_class.' '. $clearfix.'">';
+				echo '<div id="aq-block-'.$template_id.'-'.$number.'" class="aq-block aq-block-'.$id_base.' '.$size.' '.$extra_css.' '.$column_class.' '. $clearfix.'">';
 			}
 		}
 		
@@ -137,6 +139,16 @@ if(class_exists('AQ_Page_Builder')) {
 		
 		return $output;
 	}
+
+	/* Number field */
+	function aq_field_input_number($field_id, $block_id, $input, $atts, $size = 'small', $step='1', $min_step ='1', $max_step ='10', $type = 'number') {
+
+		$atts = esc_attr('step='.$step.' min='.$min_step.' max='.$max_step.'');
+
+		$output = '<input type="'.$type.'" id="'. $block_id .'_'.$field_id.'" class="input-'.$size.'" value="'.$input.'" name="aq_blocks['.$block_id.']['.$field_id.']" '.$atts.'>';
+
+		return $output;
+	}
 	
 	/* Textarea field */
 	function aq_field_textarea($field_id, $block_id, $text, $size = 'full') {
@@ -145,11 +157,11 @@ if(class_exists('AQ_Page_Builder')) {
 		return $output;
 	}
 	
-	
 	/* Select field */
 	function aq_field_select($field_id, $block_id, $options, $selected) {
+		$output = '';
 		$options = is_array($options) ? $options : array();
-		$output = '<select id="'. $block_id .'_'.$field_id.'" name="aq_blocks['.$block_id.']['.$field_id.']">';
+		$output .= '<select id="'. $block_id .'_'.$field_id.'" name="aq_blocks['.$block_id.']['.$field_id.']">';
 		foreach($options as $key=>$value) {
 			$output .= '<option value="'.$key.'" '.selected( $selected, $key, false ).'>'.htmlspecialchars($value).'</option>';
 		}
@@ -183,24 +195,43 @@ if(class_exists('AQ_Page_Builder')) {
 		
 		return $output;
 	}
+
+
+    /* Slider Range field */
+	function aq_field_slider_range($field_id, $block_id, $input, $step = '1', $min = '0', $max = '10') {
+            $output = '';
+			$output .= '<input id="'. $block_id .'_'.$field_id.'" class="range slider-'. $block_id .'" name="aq_blocks['.$block_id.']['.$field_id.']" data-input-type="range" type="range" step="'.$step.'" min="'.$min.'" max="'.$max.'" value="'.$input.'">';
+		
+		return $output;
+	}
+    
 	
 	/* Color picker field */
 	function aq_field_color_picker($field_id, $block_id, $color, $default = '') {
 		$output = '<div class="aqpb-color-picker">';
-			$output .= '<input type="text" id="'. $block_id .'_'.$field_id.'" class="input-color-picker" value="'. $color .'" name="aq_blocks['.$block_id.']['.$field_id.']" data-default-color="'. $default .'"/>';
+			$output .= '<input type="text" id="'. $block_id .'_'.$field_id.'" class="input-color-picker" value="'. $color .'" name="aq_blocks['.$block_id.']['.$field_id.']" data-alpha="true" data-default-color="'. $default .'"/>';
 		$output .= '</div>';
 		
 		return $output;
 	}
 	
-	/* Single Checkbox */
+	/* Single Checkbox field */
 	function aq_field_checkbox($field_id, $block_id, $check) {
 		$output = '<input type="hidden" name="aq_blocks['.$block_id.']['.$field_id.']" value="0" />';
 		$output .= '<input type="checkbox" id="'. $block_id .'_'.$field_id.'" class="input-checkbox" name="aq_blocks['.$block_id.']['.$field_id.']" '. checked( 1, $check, false ) .' value="1"/>';
 		
 		return $output;
 	}
-	
+
+	/* Switchery Checkbox field - data-state="off" = disabled | $checked='checked' = makes the checkbox checked */
+	function aq_field_switch_checkbox($field_id, $block_id, $check, $data_size ='small', $data_color ='#24b47e', $data_state ='on', $checked ='') {
+		$output  = '<input type="hidden" name="aq_blocks['.$block_id.']['.$field_id.']" value="0" />';
+		$output .= '<input type="checkbox"  id="'. $block_id .'_'.$field_id.'" class="js-switch input-checkbox" name="aq_blocks['.$block_id.']['.$field_id.']" '. checked( 1, $check, false ) .' value="1" data-plugin="switchery" data-size="'.$data_size.'" data-color="'.$data_color.'" data_state="'.$data_state.'" '.$checked.' />';
+		
+		return $output;
+	}
+		
+	/* Editor field */	
 	function aq_field_editor($field_id, $block_id, $text, $size = 'full'){
 		$output = '<div class="ebor-editor-launch-wrap"><a href="#'. $block_id .'_'.$field_id.'" class="button button-primary ebor-editor-launch">Edit Block Content</a><div class="hidden"><textarea id="'. $block_id .'_'.$field_id.'" class="textarea-'.$size.'" name="aq_blocks['.$block_id.']['.$field_id.']" rows="5">'.$text.'</textarea></div></div>';
 		return $output;	

@@ -12,6 +12,7 @@ if(!( function_exists('ebor_pivot_button') )){
 			'url' => '#',
 		    'appearance' => 'btn-success',
 		    'target' => '_self',
+	        'alt_text' => '',
 		    'text' => 'Default Button Text'
 		), $atts ));
 		ob_start();
@@ -20,7 +21,7 @@ if(!( function_exists('ebor_pivot_button') )){
 			$target = '_self';
 		
 		$content = '';
-		$content .= '<a href="'. esc_url($url) .'" class="btn '. esc_attr($appearance) .'" target="'. esc_attr($target) .'">'. esc_html($text) .'</a>';
+		$content .= '<a href="'. esc_url($url) .'" class="btn '. esc_attr($appearance) .'" alt="'. esc_attr($alt_text) .'" target="'. esc_attr($target) .'">'. esc_html($text) .'</a>';
 
 		$content .= ob_get_contents();
 		ob_end_clean();
@@ -29,6 +30,7 @@ if(!( function_exists('ebor_pivot_button') )){
 	}
 	add_shortcode('pivot_button','ebor_pivot_button');
 }
+
 
 /**
  * Ebor Pivot Icon shortcode // custom mrancho color attribute

@@ -3,6 +3,7 @@
  * How To Deploy WordPress Plugins With GitHub Using Transients
  * @see https://www.smashingmagazine.com/2015/08/deploy-wordpress-plugins-with-github-using-transients/#writing-the-code-for-our-filters
  */
+
 class Github_Updater {
 
 	private $file;
@@ -20,6 +21,9 @@ class Github_Updater {
 	private $authorize_token;
 
 	private $github_response;
+
+	private $readme_response;
+
 
 	public function __construct( $file ) {
 
@@ -48,15 +52,22 @@ class Github_Updater {
 		$this->authorize_token = $token;
 	}
 
+    /**
+     * Github API - Get Latest release
+     * @see https://developer.github.com/v3/repos/releases/
+    */
 	private function get_repository_info() {
 	    if ( is_null( $this->github_response ) ) { // Do we have a response?
+
+	    	$options = array('timeout' => 10);
+
 	        $request_uri = sprintf( 'https://api.github.com/repos/%s/%s/releases', $this->username, $this->repository ); // Build URI
 
 	        if( $this->authorize_token ) { // Is there an access token?
 	            $request_uri = add_query_arg( 'access_token', $this->authorize_token, $request_uri ); // Append it
 	        }
 
-	        $response = json_decode( wp_remote_retrieve_body( wp_remote_get( $request_uri ) ), true ); // Get JSON and parse it
+	        $response = json_decode( wp_remote_retrieve_body( wp_remote_get( $request_uri, $options ) ), true ); // Get JSON and parse it
 
 	        if( is_array( $response ) ) { // If it is an array
 	            $response = current( $response ); // Get the first item
@@ -70,7 +81,26 @@ class Github_Updater {
 	    }
 	}
 
+	public function readme_changelog() {
+
+		if ( is_null( $this->readme_response ) ) {
+
+			 $request_readme = sprintf( 'https://api.github.com/repos/%s/%s/readme', $this->username, $this->repository ); // Build URI
+
+			 $response_readme = json_decode( wp_remote_retrieve_body( wp_remote_get( $request_readme ) ), true ); // Get JSON and parse it
+
+			//$readme_request = wp_remote_get( sprintf( 'https://raw.githubusercontent.com/repos/%s/%s/master/README.md', $this->username, $this->repository ) );
+			//$readme_raw = wp_remote_retrieve_body( $readme_request );
+
+			$this->readme_response = $response_readme;
+
+		}
+
+		
+	}
+
 	public function initialize() {
+		//add_filter( 'admin_init', array( $this, 'readme_changelog' ) );
 		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'modify_transient' ), 10, 1 );
 		add_filter( 'plugins_api', array( $this, 'plugin_popup' ), 10, 3);
 		add_filter( 'upgrader_post_install', array( $this, 'after_install' ), 10, 3 );
@@ -78,7 +108,7 @@ class Github_Updater {
 
 	public function modify_transient( $transient ) {
 
-		if( property_exists( $transient, 'checked') ) { // Check if transient has a checked property
+		if( property_exists( $transient, 'checked' ) ) { // Check if transient has a checked property
 
 			if( $checked = $transient->checked ) { // Did Wordpress check for updates?
 
@@ -92,9 +122,20 @@ class Github_Updater {
 
 					$slug = current( explode('/', $this->basename ) ); // Create valid slug
 
-					$plugin = array( // setup our plugin info
+					// Setup plugin icons
+					$plugin['icons'] = array();
+
+					$icons = array(
+						'svg' => plugins_url( 'assets/icon.svg', __FILE__ ),
+						'1x'  => plugins_url( 'assets/icon-128x128.png', __FILE__ ),
+						'2x'  => plugins_url( 'assets/icon-256x256.png', __FILE__ )
+					);
+
+					// Setup our plugin info
+					$plugin = array(
 						'url' => $this->plugin["PluginURI"],
 						'slug' => $slug,
+      				    'icons' => $icons,
 						'package' => $new_files,
 						'new_version' => $this->github_response['tag_name']
 					);
@@ -107,6 +148,7 @@ class Github_Updater {
 		return $transient; // Return filtered transient
 	}
 
+
 	public function plugin_popup( $result, $action, $args ) {
 
 		if( ! empty( $args->slug ) ) { // If there is a slug
@@ -115,31 +157,47 @@ class Github_Updater {
 
 				$this->get_repository_info(); // Get our repo info
 
-				date_default_timezone_set('America/Sao_Paulo');
-
-				$date_added = new DateTime( $this->github_response['created_at'] );  // convert UNIX timestamp to PHP DateTime
-				$date_added->format('Y-m-d'); // output = 2017-12-15
-
 				// Set it to an array
 				$plugin = array(
 					'name'				=> $this->plugin["Name"],
 					'slug'				=> $this->basename,
 					'requires'			=> '4.5.2',
-					'tested'			=> '4.9.1',
-					'rating'			=> '100.0',
-					'num_ratings'		=> '10823',
+					'tested'			=> '4.9.6',
+					'rating'			=> '95.5',
+					'ratings' => array(
+                  					5 => 1800,
+                  					4 => 200 
+      				),
+					'num_ratings'		=> '2000',
 					'downloaded'		=> '14249',
-					'added'				=> $date_added, //'2017-12-15',
+					'added'				=> $this->github_response['created_at'], //'2017-12-17',
 					'version'			=> $this->github_response['tag_name'],
-					'author'			=> $this->plugin["AuthorName"],
-					'author_profile'	=> $this->plugin["AuthorURI"],
+					'author'			=> $this->plugin['AuthorName'],
+					'author_profile'	=> $this->plugin['AuthorURI'],
 					'last_updated'		=> $this->github_response['published_at'],
-					'homepage'			=> $this->plugin["PluginURI"],
-					'short_description' => $this->plugin["Description"],
+					'homepage'			=> $this->plugin['PluginURI'],
+					'short_description' => $this->plugin['Description'],
 					'sections'			=> array(
-						'Description'	=> $this->plugin["Description"],
-						'Updates'		=> $this->github_response['body'],
+						'description'	=> $this->plugin['Description'],
+						'updates'		=> class_exists( 'Parsedown' ) ? Parsedown::instance()->parse( $this->github_response['body'] ) : $this->github_response['body'],
+						'changelog'		=> class_exists( 'Parsedown' ) ? Parsedown::instance()->parse( base64_decode($this->readme_response['content']) ) : $this->github_response['body'],
 					),
+					'banners'			=> array(
+                  		'low'			=> plugins_url( 'assets/banner-772x250.png', __FILE__ ),
+                  		'high'			=> plugins_url( 'assets/banner-1544x500.png', __FILE__ )
+      				),
+					'compatibility' => array(
+						'4.9.1' => array(
+							'1.3.9' => array(
+								'0' => 100,
+								'1' => 1,
+								'2' => 1
+							),
+						),
+					),
+      				'contributors' => array(
+                  		'designroom' => 'https://profiles.wordpress.org/designroom',
+      				),
 					'download_link'		=> $this->github_response['zipball_url']
 				);
 

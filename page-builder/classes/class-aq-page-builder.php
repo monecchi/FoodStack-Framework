@@ -106,15 +106,24 @@ if(!class_exists('AQ_Page_Builder')) {
 			wp_register_style( 'aqpb-css', $this->url.'assets/stylesheets/aqpb.css', array(), time(), 'all');
 			wp_register_style( 'aqpb-blocks-css', $this->url.'assets/stylesheets/aqpb_blocks.css', array(), time(), 'all');
 			wp_register_style( 'ebor-page-builder-css', $this->url.'assets/stylesheets/ebor.css', array(), time(), 'all');
+			// custom mrancho switchery 
+			wp_register_style( 'ebor-switchery-css', $this->url.'assets/stylesheets/switchery.min.css', array(), time(), 'all');
+
 			wp_register_script('aqpb-js', $this->url . 'assets/javascripts/aqpb.js', array('jquery'), time(), true);
 			wp_register_script('aqpb-fields-js', $this->url . 'assets/javascripts/aqpb-fields.js', array('jquery'), time(), true);
 			wp_register_script('ebor-page-builder-js', $this->url . 'assets/javascripts/ebor.js', array('jquery'), time(), true);
-			
+			// custom mrancho alpha transparency for wp-color-picker
+			wp_register_script('ebor-color-picker-alpha-js', $this->url . 'assets/javascripts/wp-color-picker-alpha.min.js', array('jquery'), time(), true);
+            // custom mrancho switchery 
+			wp_register_script('ebor-switchery-js', $this->url . 'assets/javascripts/switchery.min.js', array('jquery'), time(), true);
+
 			// Enqueue 'em
 			wp_enqueue_style('aqpb-css');
 			wp_enqueue_style('ebor-page-builder-css');
 			wp_enqueue_style('aqpb-blocks-css');
 			wp_enqueue_style('wp-color-picker');
+		   	wp_enqueue_style('ebor-switchery-css'); // custom mrancho
+		   	
 			wp_enqueue_script('jquery');
 			wp_enqueue_script('jquery-ui-sortable');
 			wp_enqueue_script('jquery-ui-resizable');
@@ -122,6 +131,8 @@ if(!class_exists('AQ_Page_Builder')) {
 			wp_enqueue_script('jquery-ui-droppable');
 			wp_enqueue_script('iris');
 			wp_enqueue_script('wp-color-picker');
+			wp_enqueue_script('ebor-color-picker-alpha-js'); // custom mrancho
+			wp_enqueue_script('ebor-switchery-js'); // custom mrancho
 			wp_enqueue_script('aqpb-js');
 			wp_enqueue_script('ebor-page-builder-js');
 			wp_enqueue_script('aqpb-fields-js');

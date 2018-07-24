@@ -13,11 +13,22 @@ jQuery(document).ready(function($){
 	/** Colorpicker Field
 	----------------------------------------------- */
 	function aqpb_colorpicker() {
+
 		$('#page-builder .input-color-picker').each(function(){
 			var $this	= $(this),
 				parent	= $this.parent();
+
+        // custom mrancho options for wp color picker
+		var myOptions = {
+		    // a callback to fire whenever the color changes to a valid color
+		    alpha: true,
+		    // show a group of common colors beneath the square
+		    // or, supply an array of colors to customize further
+		    palettes: true,
+		    palettes: ['#fc4349', '#13be66', '#8898aa', '#7d8c9c', '#32325d', '#46be8a', '#fcfefe', '#fec532']
+		};
 				
-			$this.wpColorPicker();
+			$this.wpColorPicker(myOptions);
 		});
 	}
 	
@@ -26,7 +37,43 @@ jQuery(document).ready(function($){
 	$('ul.blocks').bind('sortstop', function() {
 		aqpb_colorpicker();
 	});
+
+
+	/** Slider Range Field
+	----------------------------------------------- */
+
+    $('input[data-input-type]').on('input change', function () {
+
+       var $that = $(this);
+
+       //$this.val(val);
+        
+       $that.attr({"value":parseInt( this.value )});
+
+    });
+
+
+	/** Switchery checkbox field
+	----------------------------------------------- */
 	
+	var elems = Array.prototype.slice.call(document.querySelectorAll('*[data-plugin="switchery"]'));
+
+	elems.forEach(function(elem) {
+	  var switch_color = elem.getAttribute('data-color');
+	  var switch_size = elem.getAttribute('data-size'); 
+	  var switch_state = elem.getAttribute('data-state'); // off = true/disabled or on = false/enabled
+
+	  var switchery = new Switchery(elem, { color: switch_color, size: switch_size, disabledOpacity: 0.5 });
+
+	  if (elem.getAttribute('data-state') == "off") {
+	  	switchery.disable();
+	  } else {
+		switchery.enable();
+	  }
+
+    });
+
+
 	/** Media Uploader
 	----------------------------------------------- */	
 	$(document).on('click', '.aq_upload_button', function(event) {

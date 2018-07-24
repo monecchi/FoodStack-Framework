@@ -1,10 +1,10 @@
 <?php
 
 /*
-Plugin Name:  Foodstack Framework
+Plugin Name:  FoodStack Framework
 Plugin URI:   https://github.com/monecchi/FoodStack-Framework
 Description:  Derived from Ebor Framework by TommusRhodus Theme, this alternate version was specially crafted for WooCommerce Restaurant & Food Store websites
-Version:      1.4.2
+Version:      1.4.11
 Author:       Adriano Monecchi
 Author URI:   http://www.plandesign.com.br/
 License:      GPL2
@@ -17,7 +17,7 @@ Domain Path:  /languages
  * Plugin definitions
  */
 define( 'EBOR_FRAMEWORK_PATH', trailingslashit(plugin_dir_path(__FILE__)) );
-define( 'EBOR_FRAMEWORK_VERSION', '1.4.2');
+define( 'EBOR_FRAMEWORK_VERSION', '1.4.11');
 
 /**
  * Styles & Scripts
@@ -26,6 +26,7 @@ if(!( function_exists('ebor_framework_admin_load_scripts') )){
 	function ebor_framework_admin_load_scripts(){
 		wp_enqueue_style('ebor_framework_font_awesome', plugins_url( '/css/font-awesome.min.css' , __FILE__ ) );
 		wp_enqueue_style('ebor_framework_admin_css', plugins_url( '/css/ebor-framework-admin.css' , __FILE__ ) );
+		wp_enqueue_style('ebor_flexbox_grid_css', plugins_url( '/css/flexboxgrid.min.css' , __FILE__ ) ); // custom mrancho grid styles
 		wp_enqueue_script('ebor_framework_admin_js', plugins_url( '/js/ebor-framework-admin.js' , __FILE__ ) );
 	}
 	add_action('admin_enqueue_scripts', 'ebor_framework_admin_load_scripts', 200);
@@ -70,8 +71,8 @@ if(!( function_exists('ebor_ajax_import_data') )){
 /**
  * Theme updates
  */
-
-/* custom mrancho */ // require_once( EBOR_FRAMEWORK_PATH . 'envato-wp-updater/updater-init.php' );
+//custom mrancho
+//require_once( EBOR_FRAMEWORK_PATH . 'envato-wp-updater/updater-init.php' );
 
 /**
  * Plugin Updates
@@ -81,14 +82,17 @@ if(!( function_exists('ebor_ajax_import_data') )){
  * @author TommusRhodus
  * @since v1.0.0
  */
-/* custom mrancho */ // require_once(EBOR_FRAMEWORK_PATH . 'wp-updates-plugin.php');
-/* custom mrancho */ // new WPUpdatesPluginUpdater_745( 'http://wp-updates.com/api/2/plugin', plugin_basename(__FILE__));
+//require_once(EBOR_FRAMEWORK_PATH . 'wp-updates-plugin.php');
+//new WPUpdatesPluginUpdater_745( 'http://wp-updates.com/api/2/plugin', plugin_basename(__FILE__));
 
 /**
- * Github Plugin Updater Class
+ * Github updater class
  */
 if( ! class_exists( 'Github_Updater' ) ) {
 	include_once( plugin_dir_path( __FILE__ ) . 'git-updater.php' );
+
+	// GitHub markdown parser for release notes, include the parser
+    require_once( plugin_dir_path( __FILE__ ) . 'includes/Parsedown.php' );
 }
 
 $updater = new Github_Updater( __FILE__ );

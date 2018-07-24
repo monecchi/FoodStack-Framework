@@ -40,6 +40,7 @@ $defaults = array(
 	'pivot_shortcodes'         => '0',
 	'pivot_widgets'            => '0',
 	'food_menu_post_type'      => '0', // Meu Rancho Custom Food Menu Post Type
+	'mrslider_post_type'       => '0', // Meu Rancho Custom Slider Post Type
 	'portfolio_post_type'      => '0',
 	'team_post_type'           => '0',
 	'client_post_type'         => '0',
@@ -227,6 +228,14 @@ if( '1' == $framework_options['food_menu_post_type'] ){
 	add_action( 'init', 'ebor_framework_register_food_menu', 10 ); // food_menu
 	add_action( 'init', 'ebor_framework_create_food_menu_taxonomies', 10  ); // food_menu_categories 
 	add_action( 'init', 'ebor_framework_create_food_menu_tags', 10  ); // food_tag // ingredients
+}
+
+/**
+ * Register Slider Post Type // mrslider Custom Mrancho
+ */
+if( '1' == $framework_options['mrslider_post_type'] ){
+	add_action( 'init', 'ebor_framework_register_mrsliders', 10 ); // mrslider post type
+	add_action( 'init', 'ebor_framework_create_mrslider_taxonomies', 10  ); // mrslider_category // custom taxonomies 
 }
 
 /**

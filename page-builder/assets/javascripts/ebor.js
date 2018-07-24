@@ -31,7 +31,7 @@ jQuery(document).ready(function($) {
 	 * Icon Selector
 	 */
 	$('body').on('click', '.ebor-icon-modal-launcher', function(){
-		$(this).parent().find('.icon-modal').show();
+		$(this).parent().find('.icon-modal').show(); 
 		return false;
 	});
 	$('body').on('click', '.icon-modal .ebor-modal-icon', function(){
@@ -49,6 +49,10 @@ jQuery(document).ready(function($) {
 		} else {
 			$(this).parent().find('.ebor-modal').show();
 		}
+		$('body').addClass('modal-isopen'); // prevent body from scrolling
+		$('#blocks-to-edit').sortable({
+			disabled: true
+    	}); //prevent sortable user interaction
 		return false;
 	});
 	
@@ -57,6 +61,10 @@ jQuery(document).ready(function($) {
 	 */
 	$('body').on('click', '.ebor-modal-closer', function(){
 		$(this).parents('.ebor-modal').hide();
+		$('body').removeClass('modal-isopen'); // let body overflow auto
+		$('#blocks-to-edit').sortable({
+			disabled: false
+    	}); //enables sortable user interaction
 		return false;
 	});
 	$('body').on('click', '.icon-modal-closer', function(){
