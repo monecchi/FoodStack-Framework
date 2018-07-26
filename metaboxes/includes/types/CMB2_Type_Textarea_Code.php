@@ -19,21 +19,12 @@ class CMB2_Type_Textarea_Code extends CMB2_Type_Textarea {
 	 * @param  array $args Override arguments
 	 * @return string       Form textarea element
 	 */
-	public function render( $args = array() ) {
-		$args = wp_parse_args( $args, array(
-			'class' => 'cmb2-textarea-code',
-			'desc'  => '</pre>' . $this->_desc( true ),
-		) );
-
-		if ( true !== $this->field->options( 'disable_codemirror' )
-			&& function_exists( 'wp_enqueue_code_editor' ) ) {
-			$args['js_dependencies'] = array( 'code-editor' );
-		} else {
-			$args['class'] = rtrim( $args['class'] ) . ' disable-codemirror';
-		}
-
+	public function render() {
 		return $this->rendered(
-			sprintf( '<pre>%s', parent::render( $args ) )
+			sprintf( '<pre>%s', parent::render( array(
+				'class' => 'cmb2-textarea-code',
+				'desc' => '</pre>' . $this->_desc( true ),
+			) ) )
 		);
 	}
 }

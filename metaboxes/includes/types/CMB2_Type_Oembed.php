@@ -12,7 +12,7 @@
  */
 class CMB2_Type_Oembed extends CMB2_Type_Text {
 
-	public function render( $args = array() ) {
+	public function render() {
 		$field = $this->field;
 
 		$meta_value = trim( $field->escaped_value() );
