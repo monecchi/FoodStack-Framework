@@ -36,6 +36,7 @@ add_action( 'init', 'foodstack_framework_load_textdomain' );
  * If ebor_framework_options isn't set then we'll pull a list of defaults.
  * By default everything is turned off.
  */
+
 $defaults = array(
 	'pivot_shortcodes'         => '0',
 	'pivot_widgets'            => '0',
@@ -66,6 +67,9 @@ $defaults = array(
 	'lumos_widgets'            => '0',
 	'foundry_widgets'          => '0',
 	'malefic_widgets'          => '0',
+	'creatink_widgets'         => '0',
+	'brailie_widgets'          => '0',
+	'gaze_widgets'			   => '0',
 	'foundry_shortcodes'       => '0',
 	'malory_vc_shortcodes'     => '0',
 	'peekskill_vc_shortcodes'  => '0',
@@ -79,6 +83,13 @@ $defaults = array(
 	'waves_vc_shortcodes'      => '0',
 	'sugarland_vc_shortcodes'  => '0',
 	'foundry_vc_shortcodes'    => '0',
+	'griddr_vc_shortcodes'     => '0',
+	'candar_vc_shortcodes'     => '0',
+	'creatink_vc_shortcodes'   => '0',
+	'gaze_vc_shortcodes'       => '0',
+	'belton_vc_shortcodes'     => '0',
+	'brailie_vc_shortcodes'    => '0',
+	'pivot_vc_shortcodes'      => '0',
 	'meetup_vc_shortcodes'     => '0',
 	'hygge_vc_shortcodes'      => '0',
 	'somnus_vc_shortcodes'     => '0'
