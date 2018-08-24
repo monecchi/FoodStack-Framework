@@ -11,11 +11,13 @@ function ebor_post_shortcode( $atts ) {
 			array(
 				'pppage' => '4',
 				'filter' => 'all',
+				'tag'    => 'all',
 				'layout' => 'list',
 				'custom_css_class' => '',
 				'paging' => 'false',
 				'arrows' => 'true',
-				'timing' => 'false'
+				'timing' => 'false',
+				'offset' => '0'
 			), $atts 
 		) 
 	);
@@ -34,10 +36,11 @@ function ebor_post_shortcode( $atts ) {
 	 * Setup post query
 	 */
 	$query_args = array(
-		'post_type' => 'post',
-		'post_status' => 'publish',
+		'post_type'      => 'post',
+		'post_status'    => 'publish',
 		'posts_per_page' => $pppage,
-		'paged' => $paged
+		'paged'          => $paged,
+		'offset'         => $offset
 	);
 	
 	//Hide current post ID from the loop if we're in a singular view
@@ -54,10 +57,10 @@ function ebor_post_shortcode( $atts ) {
 			//WPML recommended, remove filter, then add back after
 			remove_filter('terms_clauses', array($sitepress, 'terms_clauses'), 10, 4);
 			
-			$filterClass = get_term_by('slug', $filter, 'category');
-			$ID = (int) apply_filters('wpml_object_id', (int) $filterClass->term_id, 'category', true);
+			$filterClass    = get_term_by('slug', $filter, 'category');
+			$ID             = (int) apply_filters('wpml_object_id', (int) $filterClass->term_id, 'category', true);
 			$translatedSlug = get_term_by('id', $ID, 'category');
-			$filter = $translatedSlug->slug;
+			$filter         = $translatedSlug->slug;
 			
 			//Adding filter back
 			add_filter('terms_clauses', array($sitepress, 'terms_clauses'), 10, 4);
@@ -71,6 +74,16 @@ function ebor_post_shortcode( $atts ) {
 			)
 		);
 		
+	}
+	
+	if(!( $tag == 'all' )){
+		$query_args['tax_query'] = array(
+			array(
+				'taxonomy' => 'post_tag',
+				'field'    => 'slug',
+				'terms'    => $tag
+			)
+		);
 	}
 	
 	$old_query = $wp_query;
@@ -120,9 +133,16 @@ function ebor_post_shortcode_vc() {
 				),
 				array(
 					"type" => "dropdown",
-					"heading" => esc_html__("post Display Type", 'stackwordpresstheme'),
+					"heading" => esc_html__("Post Display Type", 'stackwordpresstheme'),
 					"param_name" => "layout",
 					"value" => ebor_get_blog_layouts(),
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Offset Posts?", 'stackwordpresstheme'),
+					"param_name" => "offset",
+					"value" => '0',
+					"description" => '<code>DEVELOPERS ONLY</code> - Offset posts shown, 0 for newest posts, 5 starts at fifth most recent etc.'
 				),
 				array(
 					"type" => "textfield",

@@ -43,7 +43,7 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 		
 		$output = '
 			<section class="imagebg image--light cover cover-blocks bg--secondary '. esc_attr($custom_css_class) .'" '. $id .'>
-				<div class="background-image-holder hidden-xs">'. wp_get_attachment_image( $image, 'full' ) .'</div>
+				<div class="background-image-holder">'. wp_get_attachment_image( $image, 'full' ) .'</div>
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-6 col-md-5">
@@ -180,7 +180,9 @@ function ebor_hero_shortcode( $atts, $content = null ) {
 					<div class="row">
 						<div class="col-sm-7 col-md-5">
 							<div class="boxed boxed--lg border--round bg--white">
-								<div class="col-md-10 col-md-offset-1 col-sm-12">'. do_shortcode(htmlspecialchars_decode($content)) .'</div>
+								<div class="col-md-10 col-md-offset-1 col-sm-12">
+									'. do_shortcode(htmlspecialchars_decode($content)) .'
+								</div>
 							</div>
 						</div>
 					</div><!--end of row-->

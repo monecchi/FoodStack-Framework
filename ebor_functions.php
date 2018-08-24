@@ -256,3 +256,18 @@ if(!( function_exists('ebor_hex2rgb') )){
 }*/
 
 add_filter('widget_text', 'do_shortcode');
+
+
+if( ! function_exists('ebor_wp_get_image_id') ) {
+    /**
+     * Custom mrancho WordPress Helper function to get attachment id from url
+     */
+    function ebor_wp_get_image_id( $image_url )
+    {
+        global $wpdb;
+        $attachment = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url ) );
+        if( $attachment ) :
+        	return $attachment[0];
+        endif;
+    }
+}

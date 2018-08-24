@@ -15,7 +15,8 @@ function ebor_portfolio_shortcode( $atts ) {
 				'custom_css_class' => '',
 				'paging' => 'true',
 				'arrows' => 'false',
-				'timing' => 'false'
+				'timing' => 'false',
+				'offset' => '0'
 			), $atts 
 		) 
 	);
@@ -28,9 +29,10 @@ function ebor_portfolio_shortcode( $atts ) {
 	 * Setup post query
 	 */
 	$query_args = array(
-		'post_type' => 'portfolio',
-		'post_status' => 'publish',
-		'posts_per_page' => $pppage
+		'post_type'      => 'portfolio',
+		'post_status'    => 'publish',
+		'posts_per_page' => $pppage,
+		'offset'         => $offset
 	);
 	
 	//Hide current post ID from the loop if we're in a singular view
@@ -47,10 +49,10 @@ function ebor_portfolio_shortcode( $atts ) {
 			//WPML recommended, remove filter, then add back after
 			remove_filter('terms_clauses', array($sitepress, 'terms_clauses'), 10, 4);
 			
-			$filterClass = get_term_by('slug', $filter, 'portfolio_category');
-			$ID = (int) apply_filters('wpml_object_id', (int) $filterClass->term_id, 'portfolio_category', true);
+			$filterClass    = get_term_by('slug', $filter, 'portfolio_category');
+			$ID             = (int) apply_filters('wpml_object_id', (int) $filterClass->term_id, 'portfolio_category', true);
 			$translatedSlug = get_term_by('id', $ID, 'portfolio_category');
-			$filter = $translatedSlug->slug;
+			$filter         = $translatedSlug->slug;
 			
 			//Adding filter back
 			add_filter('terms_clauses', array($sitepress, 'terms_clauses'), 10, 4);
@@ -116,6 +118,13 @@ function ebor_portfolio_shortcode_vc() {
 					"heading" => esc_html__("Portfolio Display Type", 'stackwordpresstheme'),
 					"param_name" => "layout",
 					"value" => ebor_get_portfolio_layouts()
+				),
+				array(
+					"type" => "textfield",
+					"heading" => esc_html__("Offset Posts?", 'stackwordpresstheme'),
+					"param_name" => "offset",
+					"value" => '0',
+					"description" => '<code>DEVELOPERS ONLY</code> - Offset posts shown, 0 for newest posts, 5 starts at fifth most recent etc.'
 				),
 				array(
 					"type" => "textfield",

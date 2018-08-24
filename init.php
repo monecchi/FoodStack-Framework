@@ -78,7 +78,10 @@ $defaults = array(
 	'malefic_vc_shortcodes'    => '0',
 	'waves_vc_shortcodes'      => '0',
 	'sugarland_vc_shortcodes'  => '0',
-	'foundry_vc_shortcodes'    => '0'
+	'foundry_vc_shortcodes'    => '0',
+	'meetup_vc_shortcodes'     => '0',
+	'hygge_vc_shortcodes'      => '0',
+	'somnus_vc_shortcodes'     => '0'
 );
 $framework_options = wp_parse_args( get_option('ebor_framework_options'), $defaults);
 
@@ -189,6 +192,36 @@ if( '1' == $framework_options['sugarland_vc_shortcodes'] ){
 if( '1' == $framework_options['foundry_vc_shortcodes'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/foundry/init.php' );	
 }
+if( '1' == $framework_options['griddr_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/griddr/init.php' );	
+}
+if( '1' == $framework_options['candar_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/candar/init.php' );	
+}
+if( '1' == $framework_options['creatink_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/creatink/init.php' );	
+}
+if( '1' == $framework_options['gaze_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/gaze/init.php' );	
+}
+if( '1' == $framework_options['belton_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/belton/init.php' );	
+}
+if( '1' == $framework_options['brailie_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/brailie/init.php' );	
+}
+if( '1' == $framework_options['pivot_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/pivot/init.php' );	
+}
+if( '1' == $framework_options['meetup_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/meetup/init.php' );	
+}
+if( '1' == $framework_options['hygge_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/hygge/init.php' );	
+}
+if( '1' == $framework_options['somnus_vc_shortcodes'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'vc_blocks/somnus/init.php' );	
+}
 
 /**
  * Register appropriate widgets
@@ -220,14 +253,23 @@ if( '1' == $framework_options['morello_widgets'] ){
 if( '1' == $framework_options['malefic_widgets'] ){
 	require_once( EBOR_FRAMEWORK_PATH . 'widgets/malefic-widgets.php' );	
 }
+if( '1' == $framework_options['creatink_widgets'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'widgets/creatink-widgets.php' );	
+}
+if( '1' == $framework_options['brailie_widgets'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'widgets/brailie-widgets.php' );	
+}
+if( '1' == $framework_options['gaze_widgets'] ){
+	require_once( EBOR_FRAMEWORK_PATH . 'widgets/gaze-widgets.php' );	
+}
 
 /**
  * Register Food Menu Post Type // Custom FoodStack Framework // Mrancho
  */
 if( '1' == $framework_options['food_menu_post_type'] ){
-	add_action( 'init', 'ebor_framework_register_food_menu', 10 ); // food_menu
 	add_action( 'init', 'ebor_framework_create_food_menu_taxonomies', 10  ); // food_menu_categories 
 	add_action( 'init', 'ebor_framework_create_food_menu_tags', 10  ); // food_tag // ingredients
+	add_action( 'init', 'ebor_framework_register_food_menu', 10 ); // food_menu
 }
 
 /**

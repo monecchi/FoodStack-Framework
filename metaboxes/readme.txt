@@ -1,5 +1,5 @@
 === CMB2 ===
-Contributors:      jtsternberg, webdevstudios, tw2113
+Contributors:      jtsternberg, webdevstudios, zao, tw2113
 Donate link:       https://cmb2.io
 Tags:              metaboxes, forms, fields, options, settings
 Requires at least: 3.8.0
@@ -75,7 +75,6 @@ If you are looking to provide language translation files, Please do so via [Word
 * [CMB2 Field Type: Font Awesome](https://github.com/serkanalgur/cmb2-field-faiconselect) by [serkanalgur](https://github.com/serkanalgur): This plugin adds a new CMB2 field type for selecting Font Awesome icons.
 * [CMB2 Field Type: Typography](https://github.com/eduplessis/cmb2-typography) by [eduplessis](https://github.com/eduplessis): This plugin adds a new CMB2 field type "Typography" and it use jQuery fontselect for the font-family selection.
 * [CMB2 Field Type: Markdown](https://github.com/Rekenna/cmb2-markdown) by [Rekenna](https://github.com/Rekenna): This plugin adds a new CMB2 field type "CMB2 Markdown" where you can type in markdown and view a live preview of the results or convert to html with a button.
-* [CMB2 Field Type: Switch Button](https://github.com/themevan/CMB2-Switch-Button) by [themevan](https://github.com/themevan): This plugin adds a Custom Switch Button field type for CMB2.
 
 ##### Other Helpful Resources
 * [CMB2 Admin Extension](https://github.com/twoelevenjay/CMB2-Admin-Extension):  adds a user interface for admins to create CMB2 meta boxes from the WordPress admin. Also on [wordpress.org](https://wordpress.org/plugins/cmb2-admin-extension/).
@@ -131,7 +130,6 @@ FAQ's usually end up in the [github wiki](https://github.com/CMB2/CMB2/wiki).
 #### Bug Fixes
 
 * Do not enqueue/register WordPress code editor JS if there are no `textarea_code` fields registered on the page. Fixes [#1110](https://github.com/CMB2/CMB2/issues/1110).
-* Do not set repeated `wysiwyg` field values to string "false" when boolean false. Fixes [#1138](https://github.com/CMB2/CMB2/issues/1138) (again!).
 
 ### 2.4.1
 
@@ -163,7 +161,7 @@ FAQ's usually end up in the [github wiki](https://github.com/CMB2/CMB2/wiki).
 	```
 * Improve/add comment info banners at top of CMB2 CSS files.
 * Added `resetBoxes`/`resetBox` Javascript methods for resetting CMB2 box forms.
-* Improved styles for fields in the new-term form.
+* Improved styles for fiels in the new-term form.
 * New `CMB2_Boxes` methods for filtering instances of `CMB2`, `CMB2_Boxes::get_by( $property, $optional_compare )` and `CMB2_Boxes::filter_by( $property, $to_ignore = null )`.
 
 #### Bug Fixes
@@ -864,7 +862,6 @@ It is now passed a null value vs saved value. If null is returned, default sanit
 #### Bug Fixes
 
 * Do not enqueue/register WordPress code editor JS if there are no `textarea_code` fields registered on the page. Fixes [#1110](https://github.com/CMB2/CMB2/issues/1110).
-* Do not set repeated `wysiwyg` field values to string "false" when boolean false. Fixes [#1138](https://github.com/CMB2/CMB2/issues/1138) (again!).
 
 ### 2.4.1
 
@@ -896,7 +893,7 @@ It is now passed a null value vs saved value. If null is returned, default sanit
 	```
 * Improve/add comment info banners at top of CMB2 CSS files.
 * Added `resetBoxes`/`resetBox` Javascript methods for resetting CMB2 box forms.
-* Improved styles for fields in the new-term form.
+* Improved styles for fiels in the new-term form.
 * New `CMB2_Boxes` methods for filtering instances of `CMB2`, `CMB2_Boxes::get_by( $property, $optional_compare )` and `CMB2_Boxes::filter_by( $property, $to_ignore = null )`.
 
 #### Bug Fixes

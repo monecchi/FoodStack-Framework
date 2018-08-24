@@ -214,20 +214,20 @@ function ebor_framework_cpt_render_form() {
  * Validate inputs for post type options form
  */
 function ebor_framework_cpt_validate_display_options($input) {
-	
-	if( get_option('ebor_framework_cpt_display_options') ){
-		
-		$displays = get_option('ebor_framework_cpt_display_options');
-		
-		foreach ($displays as $key => $value) {
-			if(isset($input[$key])){
-				$input[$key] = wp_filter_nohtml_kses($input[$key]);
-			}
-		}
-	
-	}
-	return $input;
-	
+    
+    if( get_option('ebor_framework_cpt_display_options') ){
+        
+        $displays = get_option('ebor_framework_cpt_display_options');
+        
+        foreach ($displays as $key => $value) {
+            if(isset($input[$key])){
+                $input[$key] = wp_filter_nohtml_kses($input[$key]);
+            }
+        }
+    
+    }
+    return $input;
+    
 }
 
 function ebor_framework_create_mrslider_taxonomies(){
@@ -277,7 +277,7 @@ function ebor_framework_register_mrsliders() {
         'hierarchical' => false,
         'menu_icon' => 'dashicons-menu',
         'description' => __('Slider entries.', 'ebor-framework'),
-        'supports' =>  array('title', 'thumbnail', 'excerpt'),
+        'supports' =>  array( 'title', 'editor', 'thumbnail', 'excerpt' ),
         'public' => true,
         'show_ui' => true,
         'show_in_menu' => true,
@@ -292,7 +292,7 @@ function ebor_framework_register_mrsliders() {
         'rewrite' => array( 'slug' => 'mrslider', 'with_front' => false )
     );
 
-    register_post_type( 'mrslider', $args );
+    register_post_type( 'mrslider', apply_filters( 'ebor_cpt_init', $args, "mrslider") );
 }
 
 function ebor_framework_register_mega_menu() {
@@ -333,79 +333,59 @@ function ebor_framework_register_mega_menu() {
         'capability_type' => 'post'
     );
 
-    register_post_type( 'mega_menu', $args );
+    register_post_type( 'mega_menu', apply_filters( 'ebor_cpt_init', $args, "mega_menu") ); 
 }
 
-function ebor_framework_register_portfolio() {
+/**
+ * Food Menu - Register Custom Post Type
+ */
 
-$displays = get_option('ebor_framework_cpt_display_options');
-if( $displays['portfolio_slug'] ){ $slug = $displays['portfolio_slug']; } else { $slug = 'portfolio'; }
+function ebor_framework_register_food_menu() {
+
+$displays = get_option('ebor_cpt_display_options');
+
+if( $displays['food_menu_slug'] ){ $slug = $displays['food_menu_slug']; } else { $slug = 'food_menu'; }
 
     $labels = array( 
-        'name' => __( 'Portfolio', 'ebor-framework' ),
-        'singular_name' => __( 'Portfolio', 'ebor-framework' ),
-        'add_new' => __( 'Add New', 'ebor-framework' ),
-        'add_new_item' => __( 'Add New Portfolio', 'ebor-framework' ),
-        'edit_item' => __( 'Edit Portfolio', 'ebor-framework' ),
-        'new_item' => __( 'New Portfolio', 'ebor-framework' ),
-        'view_item' => __( 'View Portfolio', 'ebor-framework' ),
-        'search_items' => __( 'Search Portfolios', 'ebor-framework' ),
-        'not_found' => __( 'No portfolios found', 'ebor-framework' ),
-        'not_found_in_trash' => __( 'No portfolios found in Trash', 'ebor-framework' ),
-        'parent_item_colon' => __( 'Parent Portfolio:', 'ebor-framework' ),
-        'menu_name' => __( 'Portfolio', 'ebor-framework' ),
+        'name' => __( 'Food Menus', 'ebor-framework' ),
+        'singular_name' => _x( 'Food Menu', 'Sidebar Nav Menu - All Food Menu Items', 'ebor-framework' ),
+        'add_new' => _x( 'Add New Food Menu', 'Sidebar Nav Menu', 'ebor-framework' ), 
+        'add_new_item' => _x( 'Add New Food Menu', 'Add New Item Page Title', 'ebor-framework' ),  
+        'edit_item' => _x( 'Edit Food Menu Item', 'Edit Item Page Title', 'ebor-framework' ),
+        'new_item' => _x( 'New Food Menu Item', 'Action Button - Add New Item', 'ebor-framework' ), 
+        'view_item' => __( 'View Food Menu Item', 'ebor-framework' ),
+        'search_items' => __( 'Search Food Menu Items', 'ebor-framework' ),
+        'not_found' => __( 'No Food Menu found', 'ebor-framework' ),
+        'not_found_in_trash' => __( 'No Food Menu found in Trash', 'ebor-framework' ),
+        'parent_item_colon' => __( 'Parent Food Menu:', 'ebor-framework' ),
+        'menu_name' => __( 'Food Menu', 'ebor-framework' ),
     );
 
-    $args = array( 
+    $args = array(
+        'label' => __( 'Food Menu', 'mrancho' ),
+        'description' => __( 'Manage Restaurant & Pizzeria Menus', 'mrancho' ),
         'labels' => $labels,
-        'hierarchical' => false,
-        'description' => __('Portfolio entries for the ebor Theme.', 'ebor-framework'),
-        'supports' => array( 'title', 'editor', 'thumbnail', 'post-formats', 'comments' ),
-        'taxonomies' => array( 'portfolio-category' ),
+        'menu_icon' => 'dashicons-align-right',
+        'supports' => array('title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'page-attributes', ),
+        'taxonomies' => array('food_menu_categories', 'food_tag' ),
         'public' => true,
-        'show_in_rest' => true, // wheather or not to make the new custom post_type avaialble on WP REST API
         'show_ui' => true,
         'show_in_menu' => true,
         'menu_position' => 5,
-        'menu_icon' => 'dashicons-portfolio',
-        
+        'show_in_admin_bar' => true,
         'show_in_nav_menus' => true,
-        'publicly_queryable' => true,
-        'exclude_from_search' => false,
-        'has_archive' => true,
-        'query_var' => true,
         'can_export' => true,
-        'rewrite' => array( 'slug' => $slug ),
-        'capability_type' => 'post',
-        'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ) // array( 'title', 'editor', 'author', 'thumbnail', 'post-formats', 'tags', 'excerpt', 'comments' )
+        'has_archive' => false,
+        'hierarchical' => false,
+        'exclude_from_search' => false,
+        'show_in_rest' => true,
+        'rewrite' => true,
+        'rewrite' => array( 'slug' => $slug, 'with_front' => false ),
+        'publicly_queryable' => true,
+        'capability_type' => 'post'
     );
+    register_post_type( 'food_menu', $args );
 
-    register_post_type( 'portfolio', $args );
-}
-
-function ebor_framework_create_portfolio_taxonomies(){
-	$labels = array(
-	    'name' => __( 'Portfolio Categories','ebor-framework' ),
-	    'singular_name' => __( 'Portfolio Category','ebor-framework' ),
-	    'search_items' =>  __( 'Search Portfolio Categories','ebor-framework' ),
-	    'all_items' => __( 'All Portfolio Categories','ebor-framework' ),
-	    'parent_item' => __( 'Parent Portfolio Category','ebor-framework' ),
-	    'parent_item_colon' => __( 'Parent Portfolio Category:','ebor-framework' ),
-	    'edit_item' => __( 'Edit Portfolio Category','ebor-framework' ), 
-	    'update_item' => __( 'Update Portfolio Category','ebor-framework' ),
-	    'add_new_item' => __( 'Add New Portfolio Category','ebor-framework' ),
-	    'new_item_name' => __( 'New Portfolio Category Name','ebor-framework' ),
-	    'menu_name' => __( 'Portfolio Categories','ebor-framework' ),
-	  ); 	
-  register_taxonomy('portfolio_category', array('portfolio'), array(
-    'hierarchical' => true,
-    'labels' => $labels,
-    'show_in_rest' => true, // wheather or not to make the new custom post_type avaialble on WP REST API
-    'show_ui' => true,
-    'show_admin_column' => true,
-    'query_var' => true,
-    'rewrite' => true,
-  ));
 }
 
 /**
@@ -416,45 +396,42 @@ function ebor_framework_create_portfolio_taxonomies(){
 function ebor_framework_create_food_menu_taxonomies(){
 
 $displays = get_option('ebor_framework_cpt_display_options');
- if( $displays['food_cat_slug'] ){ $slug = $displays['food_cat_slug']; } else { $slug = 'food_menu_categories'; }
 
-	$labels = array(
-	    'name' => __( 'Food Menu Types','ebor-framework' ),
-	    'singular_name' => __( 'Food Menu Category','ebor-framework' ),
-	    'search_items' =>  __( 'Search Food Menu Categories','ebor-framework' ),
-	    'all_items' => __( 'All Food Menu Categories','ebor-framework' ),
-	    'parent_item' => __( 'Parent Food Menu Category','ebor-framework' ),
-	    'parent_item_colon' => __( 'Parent Food Menu Category:','ebor-framework' ),
-	    'edit_item' => __( 'Edit Food Menu Category','ebor-framework' ), 
-	    'update_item' => __( 'Update Food Menu Category','ebor-framework' ),
-	    'add_new_item' => __( 'Add New Food Menu Category','ebor-framework' ),
-	    'new_item_name' => __( 'New Food Menu Category Name','ebor-framework' ),
-	    'menu_name' => __( 'Food Menu Categories','ebor-framework' ),
-	  ); 	
-  // register_taxonomy('food_menu_categories', array('food_menu'), array(
-  //   'hierarchical' => true,
-  //   'labels' => $labels,
-  //   'show_ui' => true,
-  //   'show_in_rest' => true, // wheather or not to make the new custom taxonomy avaialble on WP REST API
-  //   'show_admin_column' => true,
-  //   'query_var' => true,
-  //   'rewrite' => true, 'rewrite' => array( 'slug' => $slug ), 
-  // ));
+if( $displays['food_cat_slug'] ){ $slug = $displays['food_cat_slug']; } else { $slug = 'food_menu_categories'; }
+
+    $labels = array(
+        'name' => __( 'Food Menu Types','ebor-framework' ),
+        'singular_name' => __( 'Food Menu Category','ebor-framework' ),
+        'search_items' =>  __( 'Search Food Menu Categories','ebor-framework' ),
+        'all_items' => __( 'All Food Menu Categories','ebor-framework' ),
+        'parent_item' => __( 'Parent Food Menu Category','ebor-framework' ),
+        'parent_item_colon' => __( 'Parent Food Menu Category:','ebor-framework' ),
+        'edit_item' => __( 'Edit Food Menu Category','ebor-framework' ), 
+        'update_item' => __( 'Update Food Menu Category','ebor-framework' ),
+        'add_new_item' => __( 'Add New Food Menu Category','ebor-framework' ),
+        'new_item_name' => __( 'New Food Menu Category Name','ebor-framework' ),
+        'menu_name' => __( 'Food Menu Categories','ebor-framework' ),
+      );    
 
     $args = array(
-        'hierarchical'      => true,
-        'description' => __('Manages all the Food Menu Categories', 'ebor-framework'),
-        'labels'            => $labels,
-        'show_ui'           => true,
+        'labels' => $labels,
+        'description' => __( 'Manage Categories for Food Menus', 'mrancho' ),
+        'hierarchical' => true,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => true,
+        'show_in_rest' => true,
+        'show_tagcloud' => false,
+        'show_in_quick_edit' => true,
         'show_admin_column' => true,
-        'query_var'         => true,
-        'rewrite'           => true, 'rewrite' => array( 'slug' => $slug ), 
-        'show_in_rest'      => true,
-        'rest_base'         => 'especialidade',
-        'rest_controller_class' => 'WP_REST_Terms_Controller',
+        'has_archive' => true,
+        'rewrite' => true,
+        'rewrite' => array( 'slug' => $slug, 'with_front' => false ),
     );
-  
-    register_taxonomy( 'food_menu_categories', array( 'food_menu' ), $args );
+    register_taxonomy( 'food_menu_categories', array('food_menu'), $args );
+
 }
 
 // Food Menu Tags - Add new taxonomy food_tags, NOT hierarchical tags (like post_tags)
@@ -462,6 +439,7 @@ $displays = get_option('ebor_framework_cpt_display_options');
 function ebor_framework_create_food_menu_tags() {
 
 $displays = get_option('ebor_framework_cpt_display_options');
+
 if( $displays['food_tag_slug'] ){ $slug = $displays['food_tag_slug']; } else { $slug = 'food_tag'; }
 
     $labels = array(
@@ -498,87 +476,88 @@ if( $displays['food_tag_slug'] ){ $slug = $displays['food_tag_slug']; } else { $
     //'update_count_callback' => '_update_post_term_count',
     'query_var' => true,
     '_builtin' => false,
-    'rewrite' => true, 'rewrite' => array( 'slug' => $slug, 'with_front'=>'false' ), 
+    'rewrite' => true, 'rewrite' => array( 'slug' => $slug, 'with_front' => true ), 
    ));
+
 }
 
 
-// Food Menu
+function ebor_framework_create_portfolio_taxonomies(){
 
-function ebor_framework_register_food_menu() {
+    $labels = array(
+        'name' => __( 'Portfolio Categories','ebor-framework' ),
+        'singular_name' => __( 'Portfolio Category','ebor-framework' ),
+        'search_items' =>  __( 'Search Portfolio Categories','ebor-framework' ),
+        'all_items' => __( 'All Portfolio Categories','ebor-framework' ),
+        'parent_item' => __( 'Parent Portfolio Category','ebor-framework' ),
+        'parent_item_colon' => __( 'Parent Portfolio Category:','ebor-framework' ),
+        'edit_item' => __( 'Edit Portfolio Category','ebor-framework' ), 
+        'update_item' => __( 'Update Portfolio Category','ebor-framework' ),
+        'add_new_item' => __( 'Add New Portfolio Category','ebor-framework' ),
+        'new_item_name' => __( 'New Portfolio Category Name','ebor-framework' ),
+        'menu_name' => __( 'Portfolio Categories','ebor-framework' ),
+      );
 
-$displays = get_option('ebor_cpt_display_options');
+  register_taxonomy('portfolio_category', array('portfolio'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_in_rest' => true, // wheather or not to make the new custom post_type avaialble on WP REST API
+    'show_ui' => true,
+    'show_admin_column' => true,
+    'query_var' => true,
+    'rewrite' => true,
+  ));
 
-if( $displays['food_menu_slug'] ){ $slug = $displays['food_menu_slug']; } else { $slug = 'food_menu'; }
+}
+
+function ebor_framework_register_portfolio() {
+
+$displays = get_option('ebor_framework_cpt_display_options');
+
+if( $displays['portfolio_slug'] ){ $slug = $displays['portfolio_slug']; } else { $slug = 'portfolio'; }
 
     $labels = array( 
-        'name' => __( 'Food Menus', 'ebor-framework' ),
-        'singular_name' => _x( 'Food Menu', 'Sidebar Nav Menu - All Food Menu Items', 'ebor-framework' ),
-        'add_new' => _x( 'Add New Food Menu', 'Sidebar Nav Menu', 'ebor-framework' ), 
-        'add_new_item' => _x( 'Add New Food Menu', 'Add New Item Page Title', 'ebor-framework' ),  
-        'edit_item' => _x( 'Edit Food Menu Item', 'Edit Item Page Title', 'ebor-framework' ),
-        'new_item' => _x( 'New Food Menu Item', 'Action Button - Add New Item', 'ebor-framework' ), 
-        'view_item' => __( 'View Food Menu Item', 'ebor-framework' ),
-        'search_items' => __( 'Search Food Menu Items', 'ebor-framework' ),
-        'not_found' => __( 'No Food Menu found', 'ebor-framework' ),
-        'not_found_in_trash' => __( 'No Food Menu found in Trash', 'ebor-framework' ),
-        'parent_item_colon' => __( 'Parent Food Menu:', 'ebor-framework' ),
-        'menu_name' => __( 'Food Menu', 'ebor-framework' ),
+        'name' => __( 'Portfolio', 'ebor-framework' ),
+        'singular_name' => __( 'Portfolio', 'ebor-framework' ),
+        'add_new' => __( 'Add New', 'ebor-framework' ),
+        'add_new_item' => __( 'Add New Portfolio', 'ebor-framework' ),
+        'edit_item' => __( 'Edit Portfolio', 'ebor-framework' ),
+        'new_item' => __( 'New Portfolio', 'ebor-framework' ),
+        'view_item' => __( 'View Portfolio', 'ebor-framework' ),
+        'search_items' => __( 'Search Portfolios', 'ebor-framework' ),
+        'not_found' => __( 'No portfolios found', 'ebor-framework' ),
+        'not_found_in_trash' => __( 'No portfolios found in Trash', 'ebor-framework' ),
+        'parent_item_colon' => __( 'Parent Portfolio:', 'ebor-framework' ),
+        'menu_name' => __( 'Portfolio', 'ebor-framework' ),
     );
 
-    // $args = array( 
-    //     'labels' => $labels,
-    //     'hierarchical' => false,
-    //     'description' => __('Food Menu entries.', 'ebor-framework'),
-    //     'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'post-formats', 'tags' ),
-    //     'taxonomies' => array( 'food_menu_categories', 'food_tag' ),
-    //     'public' => true,
-    //     'show_in_rest' => true, // wheather or not to make the new custom post_type avaialble on WP REST API
-    //     'show_ui' => true,
-    //     'show_in_menu' => true,
-    //     'menu_position' => 5,
-    //     'menu_icon' => 'dashicons-images-alt2',
-    //  // 'menu_icon' => 'get_template_directory_uri() . "images/custom-posttype-icon.png"' (Use an image located in the current theme - optional)
-     
-    //     'show_in_nav_menus' => true,
-    //     'publicly_queryable' => true,
-    //     'exclude_from_search' => false,
-    //     'has_archive' => true,
-    //     'query_var' => true,
-    //     'can_export' => true,
-    //     'rewrite' => array( 'slug' => $slug ),
-    //     'capability_type' => 'post'
-    // );
-
-    // register_post_type( 'food_menu', $args );
-
-    $args = array(
-        'labels'             => $labels,
-        'description' => __('Food Menu entries.', 'ebor-framework'),
-        'public'             => true,
+    $args = array( 
+        'labels' => $labels,
+        'hierarchical' => false,
+        'description' => __('Portfolio entries for the ebor Theme.', 'ebor-framework'),
+        'supports' => array( 'title', 'editor', 'thumbnail', 'post-formats', 'comments' ),
+        'taxonomies' => array( 'portfolio-category' ),
+        'public' => true,
+        'show_in_rest' => true, // wheather or not to make the new custom post_type avaialble on WP REST API
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-portfolio',
+        
+        'show_in_nav_menus' => true,
         'publicly_queryable' => true,
         'exclude_from_search' => false,
-        'show_ui'            => true,
-        'show_in_menu'       => true,
-        'query_var'          => true,
-        'can_export'         => true,
-        'rewrite'            => array( 'slug' => $slug ),
-        'capability_type'    => 'post',
-        'has_archive'        => true,
-        'hierarchical'       => false,
-        'taxonomies' => array( 'food_menu_categories', 'food_tag' ),
-        'menu_position'      => 5, //null,
-        'menu_icon' => 'dashicons-images-alt2',
-        'show_in_rest'       => true,
-        'rest_base'          => 'cardapios', // the post type as the wp api endpoint e.g /wp-json/wp/v2/cardapios/
-        'rest_controller_class' => 'WP_REST_Posts_Controller',
-        'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'tags', 'excerpt' ) // array( 'title', 'editor', 'author', 'thumbnail', 'post-formats', 'tags', 'excerpt', 'comments' )
+        'has_archive' => false, // set to false to prevent wordpress defaulting to {post_type}-archive.php, this ensures a custom post type template takes place
+        'query_var' => true,
+        'can_export' => true,
+        'rewrite'    => true, 'rewrite' => array( 'slug' => $slug, 'with_front' => false ),
+        'capability_type' => 'post',
+        'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt' ) // array( 'title', 'editor', 'author', 'thumbnail', 'post-formats', 'tags', 'excerpt', 'comments' )
     );
-  
-    register_post_type( 'food_menu', $args );
 
+    register_post_type( 'portfolio', apply_filters( 'ebor_cpt_init', $args, "portfolio") ); 
+    register_taxonomy_for_object_type( 'post_format', 'portfolio' );
 }
-
 
 function ebor_framework_register_team() {
 
